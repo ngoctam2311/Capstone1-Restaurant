@@ -1,0 +1,112 @@
+.review {
+    background-color: var(--hover-color);
+    width: 100%;
+    display: flex;
+    text-align: center;
+    padding: 26px 20px;
+}
+
+.review-left {
+    width: 58%;
+    border-right: 2px solid var(--border-color);
+}
+
+.review-left__circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.left-circle__point {
+    width: 78px;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 18px;
+    background: conic-gradient(
+        var(--green-color) 315deg,
+        var(--border-color) 0deg
+    );
+    position: relative;
+}
+
+.left-circle__point::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+}
+
+.left-circle__point-left {
+    font-size: 2.2rem;
+    font-weight: 500;
+    position: relative;
+    margin-right: 2px;
+}
+
+.left-circle__point-right {
+    font-size: 1.3rem;
+    font-weight: 100;
+    position: relative;
+    margin-top: 6px;
+}
+
+.left-circle__title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.left-circle__review {
+    font-size: 1.3rem;
+}
+
+.review-left__wrapp {
+    display: flex;
+    justify-content: center;
+}
+
+.border-service {
+    margin: 0 12px;
+    padding: 0 12px;
+    border-right: 2px solid var(--border-color);
+    border-left: 2px solid var(--border-color);
+}
+
+.review-left__wrapp-desc {
+    font-size: 1.3rem;
+    max-width: 92px;
+}
+
+/* ----- review right ------ */
+.review-right {
+    width: 42%;
+    margin: auto;
+    padding-left: 42px;
+    padding-right: 10px;
+}
+
+.review-right__wrapp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.review-right__point {
+    font-size: 1.4rem;
+    text-align: right;
+    width: 30px;
+}
+
+.review-right__horizontal {
+    width: 140px;
+    margin-left: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: var(--green-color);
+}
