@@ -113,17 +113,41 @@ function Detail() {
             <div className="detail-banner">
                 <Slider {...settings}>
                     <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                     <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                     <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                     <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                     <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                     <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img className="detail-banner__img" src={Banner} alt="" />
+                    <img
+                        className="detail-banner__img"
+                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        alt=""
+                    />
                 </Slider>
             </div>
 
@@ -300,10 +324,11 @@ function Detail() {
                         </div>
                         {/* ----- End Comment restaurant ----- */}
                     </div>
-                    {/* ----Form Book restaurant */}
+                    {/* ---- Start Form Book restaurant ---- */}
                     <div className="detail-form__order">
                         <FormOrder />
                     </div>
+                    {/* ---- End Form Book restaurant ---- */}
                 </div>
             </div>
             <div className="detail-content__home">

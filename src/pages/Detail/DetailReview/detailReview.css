@@ -79,7 +79,7 @@
 
 .review-left__wrapp-desc {
     font-size: 1.3rem;
-    max-width: 92px;
+    max-width: 74px;
 }
 
 /* ----- review right ------ */
@@ -108,5 +108,16 @@
     margin-left: 8px;
     height: 8px;
     border-radius: 8px;
+    background-color: var(--background-color);
+    position: relative;
+}
+
+.review-right__horizontal::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 8px;
+    border-radius: 8px;
     background-color: var(--green-color);
+    left: 0;
 }
