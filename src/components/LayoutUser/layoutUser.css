@@ -1,0 +1,15 @@
+.layout-user {
+    display: flex;
+    width: calc(var(--max-width-body) - 100px);
+    margin: auto;
+}
+
+.layout-user__sidebar {
+    width: 30%;
+}
+
+.layout-user__content {
+    width: 70%;
+    margin-left: 20px;
+    border: 2px solid var(--border-color);
+}

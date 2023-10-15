@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Detail, FormLogIn, FormRegister } from "./pages";
-import { Header, Footer } from "./components";
+import { Header, Footer, LayoutUser } from "./components";
+import { AccountUser, BookUser } from "./pages/ManageUser";
 
 function App() {
     return (
@@ -27,8 +28,25 @@ function App() {
                             </>
                         }
                     />
+                    <Route
+                        path="/bookuser"
+                        element={
+                            <LayoutUser>
+                                <BookUser />
+                            </LayoutUser>
+                        }
+                    />
+                    <Route
+                        path="/account"
+                        element={
+                            <LayoutUser>
+                                <AccountUser />
+                            </LayoutUser>
+                        }
+                    />
                     <Route path="/login" element={<FormLogIn />} />
                     <Route path="/register" element={<FormRegister />} />
+                    <Route path="/layout" element={<LayoutUser />} />
                 </Routes>
             </div>
         </Router>

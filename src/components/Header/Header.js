@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
@@ -9,7 +9,7 @@ import SearchMap from "./SearchMap";
 import SearchRestaurent from "./SearchRestaurent";
 
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
 
     return (
         <header className="wrapp-header">
@@ -33,9 +33,11 @@ function Header() {
                                 content="Tài khoản"
                                 placement="bottom"
                             >
-                                <button className="user-avatar">
-                                    <FontAwesomeIcon icon={faUser} />
-                                </button>
+                                <Link to="/layout">
+                                    <button className="user-avatar">
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </button>
+                                </Link>
                             </Tippy>
                         </>
                     ) : (
