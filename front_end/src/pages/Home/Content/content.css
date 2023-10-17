@@ -1,0 +1,83 @@
+.content {
+    margin-top: 30px;
+}
+
+.content-header {
+    margin-bottom: 16px;
+    width: 1000px;
+}
+
+.content-header__heading {
+    font-size: 2.4rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.wrapp-content-restaurant {
+    margin: 0 -4px;
+}
+
+.content-restaurant__link {
+    display: block;
+    width: 226px;
+    min-height: 260px;
+    margin: 6px 8px;
+    padding: 8px;
+}
+
+.content-restaurant__link:hover {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 16%);
+}
+
+.content-restaurant__img {
+    width: 210px;
+    height: 172px;
+    object-fit: cover;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.content-restaurant__info {
+    color: var(--text-color);
+}
+
+.content-restaurant__info-heading {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 1.6rem;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+.content-restaurant__info-address {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+}
+
+.content-restaurant__info-price {
+    font-size: 1.4rem;
+}
+
+/* ----- Css for Slick button ----- */
+.slick-prev:before,
+.slick-next:before {
+    margin-top: 2px;
+}
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--border-color);
+    background-color: #ecedef;
+    padding-top: 2px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: auto;
+    opacity: 1;
+}

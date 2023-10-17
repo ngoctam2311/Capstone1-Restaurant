@@ -1,0 +1,33 @@
+.sidebar {
+    background-color: #f9f9f9;
+    width: 324px;
+    position: fixed;
+    top: 0;
+    left: 220px;
+    bottom: 0;
+}
+
+.sidebar-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0 20px;
+}
+
+.sidebar-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--border-color);
+    font-size: 2.4rem;
+    border-radius: 50%;
+}
+
+.sidebar-name {
+    margin: 20px 0 26px;
+    font-size: 2.2rem;
+    font-weight: 500;
+}
