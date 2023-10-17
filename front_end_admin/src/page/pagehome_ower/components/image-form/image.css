@@ -1,0 +1,25 @@
+.image-restaurant{
+    width: 700px;
+    border-radius: 10px;
+    border: 1px solid #CDCDCD;
+    margin-left: 10px;
+    height: 100px;
+    margin-top: 20px;
+}
+.title-img{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.push-image{
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    margin-left: 30px;
+    border-radius: 5px;
+}
+.upload-img{
+    color: white;
+    font-size:  30px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
