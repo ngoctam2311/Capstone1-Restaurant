@@ -1,0 +1,161 @@
+/* ---- button ---- */
+.btn {
+    padding: 9px 12px;
+    border-radius: 4px;
+    color: var(--white-color);
+    background-color: var(--green-color);
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.wrapp-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: var(--white-color);
+}
+
+.inner {
+    height: var(--default-layout-header-height);
+    box-shadow: 0 1px 14px rgb(0 0 0 / 16%);
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    user-select: none;
+}
+
+.logo-first {
+    font-weight: 600;
+    font-size: 2.4rem;
+    color: var(--green-color);
+}
+
+.logo-last {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.search {
+    border: 1px solid var(--matte-color);
+    position: relative;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.search::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 288px;
+    background-color: var(--matte-color);
+}
+
+.search input {
+    padding: 8px 0 8px 40px;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    margin: 4px;
+    padding-right: 40px;
+    border: none;
+    outline-color: var(--green-color);
+}
+
+.search input:hover {
+    background-color: #f9fafa;
+}
+
+.wrapp-icon-address,
+.wrapp-icon-restaurent {
+    position: relative;
+}
+
+.search-address {
+    width: 280px;
+    margin-right: 6px;
+}
+
+.icon-map,
+.icon-search {
+    position: absolute;
+    font-size: 18px;
+    color: #555;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-55%);
+}
+
+.icon-address,
+.icon-restaurent {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    color: var(--white-color);
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-address:hover,
+.icon-restaurent:hover {
+    background-color: var(--matte-color);
+    cursor: pointer;
+}
+
+.search-restaurent {
+    width: 480px;
+}
+
+.search-btn {
+    margin-right: 4px;
+}
+
+.register-btn {
+    background-color: var(--white-color);
+    color: var(--green-color);
+    border: 1px solid var(--green-color);
+    margin-left: 12px;
+}
+
+.register-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.user-name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-right: 10px;
+    color: var(--text-color);
+    user-select: none;
+}
+
+.user-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: var(--text-color);
+    background-color: var(--border-color);
+}
+
+.user-avatar:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    border: 1px solid var(--text-color);
+}
