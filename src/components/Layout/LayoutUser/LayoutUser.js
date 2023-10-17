@@ -1,5 +1,5 @@
 import "./layoutUser.css";
-import SidebarUser from "../SidebarUser/SidebarUser";
+import SidebarUser from "../../SidebarUser/SidebarUser";
 
 const Layout = ({ children }) => {
     return (

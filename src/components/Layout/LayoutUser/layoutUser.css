@@ -11,5 +11,5 @@
 .layout-user__content {
     width: 70%;
     margin-left: 20px;
-    border: 2px solid var(--border-color);
+    /* border: 2px solid var(--border-color); */
 }

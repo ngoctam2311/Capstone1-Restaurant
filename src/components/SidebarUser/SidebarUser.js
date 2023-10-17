@@ -6,8 +6,9 @@ import {
     faBookOpen,
     faHouse,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import "./sidebarUser.css";
+import { routes } from "../../Routes/Routes";
+import Menu, { MenuItem } from "./Menu";
 
 const SidebarUser = () => {
     return (
@@ -19,67 +20,26 @@ const SidebarUser = () => {
                     </div>
                     <span className="sidebar-name">Văn Hùng</span>
                 </div>
-                <div>
-                    <Link to="/">
-                        <button className="sidebar-btn">
-                            <FontAwesomeIcon
-                                className="sidebar-btn__icon"
-                                icon={faHouse}
-                            />
-                            <span className="sidebar-title">Trang chủ</span>
-                        </button>
-                    </Link>
-                </div>
-                <div>
-                    <Link to="/account">
-                        <button className="sidebar-btn">
-                            <FontAwesomeIcon
-                                className="sidebar-btn__icon"
-                                icon={faUser}
-                            />
-                            <span className="sidebar-title">
-                                Thông tin cá nhân của tôi
-                            </span>
-                        </button>
-                    </Link>
-                </div>
-                <div>
-                    <Link to="/bookuser">
-                        <button className="sidebar-btn">
-                            <FontAwesomeIcon
-                                className="sidebar-btn__icon"
-                                icon={faBookOpen}
-                            />
-                            <span className="sidebar-title">
-                                Đặt bàn của tôi
-                            </span>
-                        </button>
-                    </Link>
-                </div>
-                <div>
-                    <Link>
-                        <button className="sidebar-btn">
-                            <FontAwesomeIcon
-                                className="sidebar-btn__icon"
-                                icon={faComment}
-                            />
-                            <span className="sidebar-title">
-                                Đánh giá của tôi
-                            </span>
-                        </button>
-                    </Link>
-                </div>
-                <div>
-                    <Link>
-                        <button className="sidebar-btn">
-                            <FontAwesomeIcon
-                                className="sidebar-btn__icon"
-                                icon={faArrowRightFromBracket}
-                            />
-                            <span className="sidebar-title">Đăng xuất</span>
-                        </button>
-                    </Link>
-                </div>
+                <Menu>
+                    <MenuItem to={routes.home} title="Trang chủ">
+                        <FontAwesomeIcon icon={faHouse} />
+                    </MenuItem>
+                    <MenuItem
+                        to={routes.accountuser}
+                        title="Thông tin cá nhân của tôi"
+                    >
+                        <FontAwesomeIcon icon={faUser} />
+                    </MenuItem>
+                    <MenuItem to={routes.bookuser} title="Đặt bàn của tôi">
+                        <FontAwesomeIcon icon={faBookOpen} />
+                    </MenuItem>
+                    <MenuItem to={routes.commentUser} title="Đánh giá của tôi">
+                        <FontAwesomeIcon icon={faComment} />
+                    </MenuItem>
+                    <MenuItem to={routes.home} title="Đăng xuất">
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                    </MenuItem>
+                </Menu>
             </aside>
         </div>
     );

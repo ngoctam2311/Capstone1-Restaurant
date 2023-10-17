@@ -33,7 +33,7 @@ function Header() {
                                 content="Tài khoản"
                                 placement="bottom"
                             >
-                                <Link to="/layout">
+                                <Link to="/account">
                                     <button className="user-avatar">
                                         <FontAwesomeIcon icon={faUser} />
                                     </button>
