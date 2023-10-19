@@ -1,9 +1,7 @@
-.userlist{
-    flex: 4;
-}
+
 .title{
     margin: 20px 40px;
-    background-color: #00665C;
+    background-color: #446461;
     width: 300px;
     text-align: center;
     border-radius: 20px;
@@ -11,8 +9,45 @@
     padding-top: 10px;
     color: #fff;
 }
-.time-restaurant{
+.maincontent{
     display: flex;
-    flex-direction: column;
-    align-items: end;
+}
+.listcontent-row2{
+    width: 600px;
+    height: 600px;
+    margin-left: 10px;
+}
+.footer-button{
+    float: right;
+    margin-right: 40px;
+    margin-top: 90px;
+    
+}
+.save{
+    margin-right: 40px;
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #00665C;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+.cancel{
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #CDCDCD;
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

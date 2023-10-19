@@ -5,9 +5,15 @@ export default function Image() {
   return (
     <div className='image-restaurant'>
         <span className="title-img">HÌNH ẢNH SÂN BÓNG</span>
+        
         <div className="push-image">
-            <UploadIcon className='upload-img'/>
+           <label type='file' className='file-upimg'>
+             <UploadIcon className='upload-img'/>
+             <input type="file" className='file-img'/>
+           </label>
+             
         </div>
+        
     </div>
   )
 }

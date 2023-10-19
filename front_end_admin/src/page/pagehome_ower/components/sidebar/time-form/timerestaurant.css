@@ -1,0 +1,67 @@
+.times-restaurant{
+   width: 550px;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 10px;
+   height:150px
+}
+.rowflex-grow-1{
+  display:flex;
+}
+.rowflex-grow-1{
+   margin: 20px;
+   display: flex;
+   align-content: space-around;
+   flex-wrap: wrap;
+   
+}
+.col-md-6-2{
+   margin-left: 100px;
+}
+.setuptime-text{
+   display: flex ;
+}
+.setuptime{
+   width: 500px;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 20px;
+   height: 110px;
+   margin-top: 5px;
+}
+.time-name{
+   margin-top:20px;
+   color: #000;
+
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.title-time{
+   margin-left: 20px;
+   margin-top: 5px;
+   color: #00665C;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.nice-inputw-100{
+   width: 120px;
+}
+.button-time{
+   float: right;
+   margin-right: 75px;
+   height: 40px;
+}
+.time{
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: #00665C;
+   height: 30px;
+   color: #fff;
+   width:120px;
+}

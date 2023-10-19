@@ -1,19 +1,23 @@
 .sidebar{
     width: 300px;
     background-color: #00665c;
-    height: 815px;
+    height: 900px;
+    position: relative;
+}
+.sidebarlist{
+    position: absolute;
+    /* padding: 0 30px; */
 }
 .sidebar .img{
-    height: 100px;
+    height: 107px;
+    left: 68px;
+    object-fit: cover;
     position: absolute;
-    top: 60px;
-    width: 100px;
-    left: 100px;
+    width: 114px;
+    top:10px;
 }
 .name-owner{
-    position: absolute;
-    margin-top: 80px;
-    left: 80px;
+    margin-left: 35px;
     font-size: 30px;
     font-family: "Inter", Helvetica;
     font-weight: 700;
@@ -22,15 +26,14 @@
 
 .function-name{
     font-size: 26px;
-    text-align: center;
     color: #fff;
     font-family: "Inter", Helvetica;
     font-weight: 700;
 }
 .sideMenu{
-    position: absolute;
-    margin-top: 150px;
-    left: 20px;
+   position: absolute;
+   padding: 10px 20px;
+   margin-top: 120px;
 }
 .sidebarList-item{
     margin-top: 40px;
@@ -85,6 +88,7 @@
     height: auto;
 }
 .option{
+    
     background-color: #fff;
     margin-top: 2px;
     width: 100%;

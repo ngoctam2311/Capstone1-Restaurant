@@ -5,6 +5,8 @@ import Home from "./page/pagehome_ower/home/Home";
 import "./app.css";
 import { BrowserRouter as Router , Switch , Route } from "react-router-dom"
 import Createprofile from "./page/pagehome_ower/containers/CreateProfile/Createprofile";
+import ProfileRestaurant from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/ProfileRestaurant";
+import Reservations from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/mylist/Reservations";
 
 class App extends React.Component {
    render() { 
@@ -21,6 +23,12 @@ class App extends React.Component {
                     </Route>
                     <Route path="/create">
                         <Createprofile/>
+                    </Route>
+                    <Route path="/profile">
+                         <ProfileRestaurant/>
+                    </Route>
+                    <Route path="/list">
+                         <Reservations/>
                     </Route>
                </Switch>
              </div>

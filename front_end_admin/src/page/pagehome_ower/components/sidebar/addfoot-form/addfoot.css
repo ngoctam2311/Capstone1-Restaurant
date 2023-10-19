@@ -1,0 +1,56 @@
+.add-foot-restaurant{
+    width: 550px;
+    border-radius: 10px;
+    border: 1px solid #CDCDCD;
+    margin-left: 10px;
+    height:350px;
+    margin-top: 20px;
+}
+.itle-name{
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #00665C;
+   font-family: Inter;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+}
+.all-add-foot{
+    width: 500px;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 20px;
+   height: 300px;
+   margin-top: 10px;
+}
+.add-foot{
+    margin: 10px 10px;
+}
+.form-foot{
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+    height: 30px;
+}
+.textinput{
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: rgba(255, 255, 255, 0.96);
+}
+.button-add-foot{
+    height: 30px;
+    width: 150px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #00665C;
+    color: #fff;
+}
+.button-foot{
+    height: 30px;
+    margin-left: 10px;
+    
+}
