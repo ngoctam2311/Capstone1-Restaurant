@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,81 +9,14 @@ import "./content.css";
 import { NextArrow, PrevArrow } from "./ContentBtn";
 
 function Content({ data }) {
-    // Fake data to display on the interface
-    const contentData = {
-        content: [
-            {
-                id: 1,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 2,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 3,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 4,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 5,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 6,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 7,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 8,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 9,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-            {
-                id: 10,
-                image: "https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg",
-                foodName: "Mì Quảng",
-                restaurantAddress: "Hải Châu",
-                averagePrice: "50.000",
-            },
-        ],
-    };
+    const [details, setDetail] = useState([]);
+    useEffect(() => {
+        axios
+            .get(`http://localhost:5555/api/restaurant/?page=1&limit=25`)
+            .then((res) => {
+                setDetail(res.data.data);
+            });
+    }, []);
 
     // Values for Slider
     const settings = {
@@ -99,16 +34,16 @@ function Content({ data }) {
     return (
         <div className="content">
             <div className="content-header">
-                <Link to="">
+                <Link to="/restaurant-list">
                     <h2 className="content-header__heading">{data.title}</h2>
                 </Link>
             </div>
             <div className="wrapp-content-restaurant">
                 <Slider {...settings}>
-                    {contentData.content.map((item) => (
-                        <div className="content-restaurant" key={item.id}>
+                    {details.map((item) => (
+                        <div className="content-restaurant" key={item._id}>
                             <Link
-                                to="/detail"
+                                to={`/detail/${item._id}`}
                                 className="content-restaurant__link"
                             >
                                 <img
@@ -117,11 +52,16 @@ function Content({ data }) {
                                     className="content-restaurant__img"
                                 />
                                 <div className="content-restaurant__info">
+                                    <p className="content-restaurant__info-title">
+                                        {item.typeOfRes}
+                                    </p>
                                     <h5 className="content-restaurant__info-heading">
-                                        {item.foodName}
+                                        {item.resname}
                                     </h5>
                                     <p className="content-restaurant__info-address">
-                                        {item.restaurantAddress}
+                                        {item.address.street},{" "}
+                                        {item.address.district},{" "}
+                                        {item.address.city}
                                     </p>
                                     <p className="content-restaurant__info-price">
                                         Giá trung bình {item.averagePrice}đ

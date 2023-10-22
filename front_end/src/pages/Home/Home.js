@@ -1,18 +1,33 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
 import Content from "./Content/Content";
 import Banner from "../../images/imgBanne.jpg";
 import RestaurantOwner from "../../images/imgRestaurantOwners.png";
 
-function Home() {
-    const [contents, setContents] = useState([]);
+const titleAddress = [
+    {
+        id: 1,
+        title: "Nhà hàng được chọn cho bạn",
+    },
+    {
+        id: 2,
+        title: "Nhà hàng nổi tiếng ở Hải Châu",
+    },
+    {
+        id: 3,
+        title: "Nhà hàng nổi tiếng ở Sơn Trà",
+    },
+];
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/titleAddress`)
-            .then((res) => res.json())
-            .then((res) => setContents(res));
-    }, []);
+function Home() {
+    // const [contents, setContents] = useState([]);
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/titleAddress`)
+    //         .then((res) => res.json())
+    //         .then((res) => setContents(res));
+    // }, []);
 
     return (
         <div className="home">
@@ -27,7 +42,7 @@ function Home() {
                 </p>
             </div>
 
-            {contents.map((content) => (
+            {titleAddress.map((content) => (
                 <Content key={content.id} data={content} />
             ))}
 

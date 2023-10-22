@@ -9,7 +9,7 @@ import SearchMap from "./SearchMap";
 import SearchRestaurent from "./SearchRestaurent";
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     return (
         <header className="wrapp-header">

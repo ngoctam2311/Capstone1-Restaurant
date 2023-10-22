@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,141 +13,141 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./detail.css";
 import FormOrder from "./FormOrder/FormOrder";
-import Banner from "../../images/imgBanne.jpg";
 import Content from "../Home/Content/Content";
 import DetailReview from "./DetailReview/DetailReview";
 import { settings } from "./DetailBtn";
 
-function Detail() {
-    const menuData = {
-        menuTitle: [
-            {
-                id: 1,
-                title: "Món ăn phụ",
-                menuName: [
-                    {
-                        id: 1,
-                        name: "Bánh mì bơ tỏi",
-                        price: "45.000đ",
-                    },
-                    {
-                        id: 2,
-                        name: "Rau xào thịt bò",
-                        price: "80.000đ",
-                    },
-                    {
-                        id: 3,
-                        name: "Khoai tây nghiền",
-                        price: "85.000đ",
-                    },
-                    {
-                        id: 4,
-                        name: "Cơm",
-                        price: "25.000đ",
-                    },
-                ],
-            },
-            {
-                id: 2,
-                title: "Món hầm",
-                menuName: [
-                    {
-                        id: 1,
-                        name: "Chả cá thác lác nấu khổ qua",
-                        price: "155.000đ",
-                    },
-                    {
-                        id: 2,
-                        name: "Bắp bò hầm tiêu xanh",
-                        price: "295.000đ",
-                    },
-                    {
-                        id: 3,
-                        name: "Đuôi bò hầm bia",
-                        price: "255.000đ",
-                    },
-                    {
-                        id: 4,
-                        name: "Canh gà hầm củ cải trắng",
-                        price: "220.000đ",
-                    },
-                ],
-            },
-            {
-                id: 3,
-                title: "Món thịt",
-                menuName: [
-                    {
-                        id: 1,
-                        name: "Ức vịt sốt quả mâm xôi đen",
-                        price: "165.000đ",
-                    },
-                    {
-                        id: 2,
-                        name: "Móng giò heo chiên giòn - kim chi",
-                        price: "225.000đ",
-                    },
-                    {
-                        id: 3,
-                        name: "Gân bò hầm sốt Thái",
-                        price: "190.000đ",
-                    },
-                    {
-                        id: 4,
-                        name: "Chân ếch chiên sốt Thái",
-                        price: "150.000đ",
-                    },
-                ],
-            },
-        ],
-    };
+const titleAddress = [
+    {
+        id: 1,
+        title: "Nhà hàng được chọn cho bạn",
+    },
+    {
+        id: 2,
+        title: "Nhà hàng nổi tiếng ở Hải Châu",
+    },
+    {
+        id: 3,
+        title: "Nhà hàng nổi tiếng ở Sơn Trà",
+    },
+];
 
-    const [contents, setContents] = useState([]);
+const menuData = {
+    menuTitle: [
+        {
+            id: 1,
+            title: "Món ăn phụ",
+            menuName: [
+                {
+                    id: 1,
+                    name: "Bánh mì bơ tỏi",
+                    price: "45.000đ",
+                },
+                {
+                    id: 2,
+                    name: "Rau xào thịt bò",
+                    price: "80.000đ",
+                },
+                {
+                    id: 3,
+                    name: "Khoai tây nghiền",
+                    price: "85.000đ",
+                },
+                {
+                    id: 4,
+                    name: "Cơm",
+                    price: "25.000đ",
+                },
+            ],
+        },
+        {
+            id: 2,
+            title: "Món hầm",
+            menuName: [
+                {
+                    id: 1,
+                    name: "Chả cá thác lác nấu khổ qua",
+                    price: "155.000đ",
+                },
+                {
+                    id: 2,
+                    name: "Bắp bò hầm tiêu xanh",
+                    price: "295.000đ",
+                },
+                {
+                    id: 3,
+                    name: "Đuôi bò hầm bia",
+                    price: "255.000đ",
+                },
+                {
+                    id: 4,
+                    name: "Canh gà hầm củ cải trắng",
+                    price: "220.000đ",
+                },
+            ],
+        },
+        {
+            id: 3,
+            title: "Món thịt",
+            menuName: [
+                {
+                    id: 1,
+                    name: "Ức vịt sốt quả mâm xôi đen",
+                    price: "165.000đ",
+                },
+                {
+                    id: 2,
+                    name: "Móng giò heo chiên giòn - kim chi",
+                    price: "225.000đ",
+                },
+                {
+                    id: 3,
+                    name: "Gân bò hầm sốt Thái",
+                    price: "190.000đ",
+                },
+                {
+                    id: 4,
+                    name: "Chân ếch chiên sốt Thái",
+                    price: "150.000đ",
+                },
+            ],
+        },
+    ],
+};
+function Detail() {
+    // const [contents, setContents] = useState([]);
+    const [details, setDetail] = useState([]);
+    const param = useParams();
+    const { id } = param || "";
+    // console.log(id);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/titleAddress`)
-            .then((res) => res.json())
-            .then((res) => setContents(res));
-    }, []);
+        axios
+            .get(`http://localhost:5555/api/restaurant/${id}`)
+            .then((res) => {
+                setDetail(res.data.data);
+            })
+            .catch((error) => {
+                console.error("Lỗi khi tải chi tiết nhà hàng:", error);
+            });
+        // console.log(id);
+    }, [id]);
+
+    const resname = details.resname || "";
+    const { street } = details.address || "";
+    const averagePrice = details.averagePrice || "";
+    const timeOpen = details.timeOpen || "";
+    const timeClose = details.timeClose || "";
+    // const quan = details.address.district || "";
+    // console.log(details.address);
 
     return (
         <div className="detail">
             <div className="detail-banner">
                 <Slider {...settings}>
-                    <img className="detail-banner__img" src={Banner} alt="" />
                     <img
                         className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
-                        alt=""
-                    />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img
-                        className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
-                        alt=""
-                    />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img
-                        className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
-                        alt=""
-                    />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img
-                        className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
-                        alt=""
-                    />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img
-                        className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
-                        alt=""
-                    />
-                    <img className="detail-banner__img" src={Banner} alt="" />
-                    <img
-                        className="detail-banner__img"
-                        src="https://citytourdanang.com/wp-content/uploads/2017/06/nguon-goc-my-quang-citytourdanang.jpg"
+                        src={details.image}
                         alt=""
                     />
                 </Slider>
@@ -156,13 +158,16 @@ function Detail() {
                     <div className="detail-content__menu">
                         {/* ----- Start header menu ---- */}
                         <div className="detail-content__header">
-                            <h2 className="detail-content__name">Mì Quảng</h2>
+                            <h2 className="detail-content__name">{resname}</h2>
                             <div className="detail-content__info">
                                 <div className="detail-content__icon">
                                     <FontAwesomeIcon icon={faLocationDot} />
                                 </div>
                                 <h4 className="detail-content__address">
-                                    Hải Châu, Đà Nẵng
+                                    {/* {details.address.street},{" "}
+                                    {details.address.district},{" "}
+                                    {details.address.city} */}
+                                    {street}
                                 </h4>
                             </div>
                             <div className="detail-content__info">
@@ -178,7 +183,7 @@ function Detail() {
                                     <FontAwesomeIcon icon={faMoneyBill1} />
                                 </div>
                                 <p className="detail-content__price">
-                                    Giá trung bình 80.000đ
+                                    Giá trung bình {averagePrice}đ
                                 </p>
                             </div>
                             <div className="detail-open">
@@ -196,13 +201,27 @@ function Detail() {
                                         <p>Chủ nhật</p>
                                     </div>
                                     <div className="detail-open__time">
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
-                                        <span>11:00 Giờ - 23:00 Giờ</span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
+                                        <span>
+                                            {timeOpen} Giờ - {timeClose} Giờ
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -332,8 +351,8 @@ function Detail() {
                 </div>
             </div>
             <div className="detail-content__home">
-                {contents.map((content) => (
-                    <Content key={content.id} data={content} />
+                {titleAddress.map((data) => (
+                    <Content key={data.id} data={data} />
                 ))}
             </div>
         </div>

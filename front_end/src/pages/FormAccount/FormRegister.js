@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./formAccount.css";
-import { isAccountValue, isEmailValid } from "./index.js";
+// import { isAccountValue, isEmailValid } from "./index.js";
 import ImageAccount from "../../images/imgAccount.png";
 
 // Consider user values for fields
@@ -11,6 +11,17 @@ const initRegisterValue = {
     password: "",
     confirmPassword: "",
     userRegister: "",
+};
+
+// Check if the user left it blank
+export const isAccountValue = (value) => {
+    return !value || value.trim().length < 1;
+};
+
+// Check if the email is in the correct format
+export const isEmailValid = (email) => {
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regex.test(email);
 };
 
 function FormRegister() {

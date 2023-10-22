@@ -41,6 +41,11 @@
     color: var(--text-color);
 }
 
+.content-restaurant__info-title {
+    margin-top: 12px;
+    font-weight: 600;
+}
+
 .content-restaurant__info-heading {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -52,8 +57,10 @@
 }
 
 .content-restaurant__info-address {
-    font-size: 1.4rem;
-    margin-bottom: 2px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+    margin-bottom: 4px;
 }
 
 .content-restaurant__info-price {

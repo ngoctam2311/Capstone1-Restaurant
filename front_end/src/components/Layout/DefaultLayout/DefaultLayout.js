@@ -5,7 +5,14 @@ const DefaultLayout = ({ children }) => {
     return (
         <div>
             <Header />
-            <div className="default-layout">{children}</div>
+            <div
+                style={{
+                    marginTop:
+                        "calc(var(--default-layout-header-height) + 40px)",
+                }}
+            >
+                {children}
+            </div>
             <Footer />
         </div>
     );

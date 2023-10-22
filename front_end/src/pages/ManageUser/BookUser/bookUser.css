@@ -1,0 +1,48 @@
+.book-user {
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+.book-heading {
+    margin-bottom: 20px;
+}
+
+.wrapp-book {
+    margin-bottom: 30px;
+    padding: 10px 50px 40px;
+    border: 2px solid var(--border-color);
+}
+
+.book-manager__heading {
+    margin-top: 30px;
+}
+
+.book-manager__wrapp {
+    margin-top: 6px;
+}
+
+.book-manager__date {
+    font-weight: 500;
+    margin-right: 70px;
+}
+
+.book-manager__btn {
+    font-size: 2rem;
+    padding: 8px 26px;
+    margin-top: 16px;
+    border-radius: 6px;
+    color: var(--white-color);
+    background-color: var(--green-color);
+}
+
+.book-manager__btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.no-book {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-weight: 600;
+}

@@ -6,7 +6,6 @@
 }
 
 .home-banner {
-    margin-top: calc(var(--default-layout-header-height) + 40px);
     position: relative;
     user-select: none;
 }

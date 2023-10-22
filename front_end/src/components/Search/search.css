@@ -54,12 +54,15 @@
 }
 
 .popper-restaurent__btn {
+    width: 100%;
     font-size: 1.6rem;
     background-color: transparent;
     margin-left: 6px;
+    cursor: pointer;
 }
 
 .popper-restaurent__name {
+    display: flex;
     line-height: 2.4rem;
 }
 

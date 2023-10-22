@@ -15,19 +15,40 @@ function SearchRestaurent() {
 
     const inputRef = useRef();
 
+    const fetchData = (value) => {
+        fetch(
+            `http://localhost:5555/api/restaurant/?page=1&limit=10&populate=resMenuInfor`
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                const result = res.data.filter((name) => {
+                    const nameFood = name.resname;
+                    return (
+                        nameFood &&
+                        value &&
+                        nameFood.toLowerCase().includes(value)
+                    );
+                });
+                // console.log(result);
+                setSearchResult(result);
+            });
+    };
+
     useEffect(() => {
         if (!searchValue.trim()) {
             return;
         }
-
-        fetch(`http://localhost:3000/foodAddress`)
-            .then((res) => res.json())
-            .then((res) => setSearchResult(res));
+        fetchData(searchValue);
     }, [searchValue]);
 
     const handlClear = () => {
         setSearchValue("");
         inputRef.current.focus();
+    };
+
+    const handleChange = (value) => {
+        setSearchValue(value);
+        fetchData(value);
     };
 
     const handlHideResult = () => {
@@ -44,7 +65,7 @@ function SearchRestaurent() {
                     <WrapperSearch>
                         <div className="search-result" tabIndex="-1" {...attrs}>
                             {searchResult.map((result) => (
-                                <Restaurent key={result.id} data={result} />
+                                <Restaurent key={result._id} data={result} />
                             ))}
                         </div>
                     </WrapperSearch>
@@ -62,7 +83,7 @@ function SearchRestaurent() {
                         className="search-restaurent"
                         type="text"
                         placeholder="Tên nhà hàng"
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={(e) => handleChange(e.target.value)}
                         onFocus={() => setShowResule(true)}
                     />
                     {!!searchValue && (
