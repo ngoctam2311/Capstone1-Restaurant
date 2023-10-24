@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams, useParams } from "react-router-dom";
+import {
+  useNavigate,
+  useSearchParams,
+  useParams,
+  Link,
+} from "react-router-dom";
 import axios from "axios";
 
 const VerifyMail = () => {
@@ -40,7 +45,10 @@ const VerifyMail = () => {
     <div>
       {verificationStatus === "pending" && <div>Loading...</div>}
       {verificationStatus === "success" && (
-        <div>Email verified successfully!</div>
+        <div>
+          <div>Email verified successfully!</div>
+          <Link to={"/login"}>Đăng nhập ngay! </Link>
+        </div>
       )}
       {verificationStatus === "failed" && (
         <div>Verification failed. Please try again.</div>
