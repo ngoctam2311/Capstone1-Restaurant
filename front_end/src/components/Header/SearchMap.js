@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -7,26 +8,28 @@ import "tippy.js/dist/tippy.css";
 import "./header.css";
 import Maps from "../Search/Maps";
 import WrapperSearch from "../Search/WrapperSearch";
+import useDebounce from "../../Hooks/useDebounce";
 
 function SearchMap() {
     const [searchValue, setSearchValue] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [selectDistrict, setSelectDistrict] = useState("");
 
     const inputRef = useRef();
 
     const fetchData = (value) => {
-        fetch(
-            `http://localhost:5555/api/restaurant/?page=1&limit=10&populate=resMenuInfor`
-        )
-            .then((res) => res.json())
+        axios
+            .get(
+                `http://localhost:5555/api/restaurant/?page=1&limit=10&populate=resMenuInfor`
+            )
             .then((res) => {
-                const result = res.data.filter((map) => {
-                    const { ...quan } = map.address.district;
+                const result = res.data.data.filter((map) => {
+                    const { district } = map.address;
                     return (
-                        quan &&
+                        district &&
                         value &&
-                        map.address.district.toLowerCase().includes(value)
+                        district.toLowerCase().includes(value)
                     );
                 });
                 // console.log(result);
@@ -35,12 +38,19 @@ function SearchMap() {
     };
 
     useEffect(() => {
-        if (!searchValue.trim()) {
-            return;
+        if (searchValue && !searchValue.trim()) {
+            fetchData(searchValue);
         }
-        fetchData(searchValue);
     }, [searchValue]);
 
+    // Thay đổi SearchValue
+    useEffect(() => {
+        if (selectDistrict) {
+            setSearchValue(selectDistrict);
+        }
+    }, [selectDistrict]);
+
+    // Clear SearchValue và focus lại
     const handleClear = () => {
         setSearchValue("");
         inputRef.current.focus();
@@ -65,7 +75,11 @@ function SearchMap() {
                     <WrapperSearch>
                         <div className="search-result" tabIndex="-1" {...attrs}>
                             {searchResult.map((result) => (
-                                <Maps key={result._id} data={result} />
+                                <Maps
+                                    key={result._id}
+                                    data={result}
+                                    setSelectDistrict={setSelectDistrict}
+                                />
                             ))}
                         </div>
                     </WrapperSearch>

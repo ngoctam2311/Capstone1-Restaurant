@@ -179,6 +179,7 @@ function FormOrder() {
                         value={orderValue.time}
                         onChange={handleChange}
                     >
+                        <option value="00:00">00:00</option>
                         <option value="11:00">11:00</option>
                         <option value="11:30">11:30</option>
                         <option value="12:00">12:00</option>
@@ -221,6 +222,7 @@ function FormOrder() {
                         value={orderValue.people}
                         onChange={handleChange}
                     >
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

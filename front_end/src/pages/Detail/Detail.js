@@ -115,11 +115,9 @@ const menuData = {
     ],
 };
 function Detail() {
-    // const [contents, setContents] = useState([]);
     const [details, setDetail] = useState([]);
     const param = useParams();
     const { id } = param || "";
-    // console.log(id);
 
     useEffect(() => {
         axios
@@ -134,17 +132,40 @@ function Detail() {
     }, [id]);
 
     const resname = details.resname || "";
-    const { street } = details.address || "";
+    const { street, district, city } = details.address || "";
     const averagePrice = details.averagePrice || "";
     const timeOpen = details.timeOpen || "";
     const timeClose = details.timeClose || "";
-    // const quan = details.address.district || "";
-    // console.log(details.address);
 
     return (
         <div className="detail">
             <div className="detail-banner">
                 <Slider {...settings}>
+                    <img
+                        className="detail-banner__img"
+                        src={details.image}
+                        alt=""
+                    />
+                    <img
+                        className="detail-banner__img"
+                        src={details.image}
+                        alt=""
+                    />
+                    <img
+                        className="detail-banner__img"
+                        src={details.image}
+                        alt=""
+                    />
+                    <img
+                        className="detail-banner__img"
+                        src={details.image}
+                        alt=""
+                    />
+                    <img
+                        className="detail-banner__img"
+                        src={details.image}
+                        alt=""
+                    />
                     <img
                         className="detail-banner__img"
                         src={details.image}
@@ -164,10 +185,7 @@ function Detail() {
                                     <FontAwesomeIcon icon={faLocationDot} />
                                 </div>
                                 <h4 className="detail-content__address">
-                                    {/* {details.address.street},{" "}
-                                    {details.address.district},{" "}
-                                    {details.address.city} */}
-                                    {street}
+                                    {street}, {district}, {city}
                                 </h4>
                             </div>
                             <div className="detail-content__info">

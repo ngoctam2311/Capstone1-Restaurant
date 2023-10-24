@@ -2,10 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./search.css";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
-function Restaurent({ data }) {
+function Restaurent({ data, setSearchRestaurant }) {
     const handleClickResult = (e) => {
-        alert(`click ${data.resname}`);
+        setSearchRestaurant(data.resname);
     };
+
     return (
         <div className="popper-restaurent" onClick={handleClickResult}>
             <FontAwesomeIcon
@@ -14,9 +15,6 @@ function Restaurent({ data }) {
             />
             <button className="popper-restaurent__btn">
                 <p className="popper-restaurent__name">{data.resname}</p>
-                <h4 className="popper-restaurent__address">
-                    {data.address.district}
-                </h4>
             </button>
         </div>
     );

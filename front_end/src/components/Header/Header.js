@@ -21,7 +21,9 @@ function Header() {
                 <div className="search">
                     <SearchMap />
                     <SearchRestaurent />
-                    <button className="btn search-btn">Tìm</button>
+                    <Link to="/restaurant-list">
+                        <button className="btn search-btn">Tìm</button>
+                    </Link>
                 </div>
 
                 <div className="account">

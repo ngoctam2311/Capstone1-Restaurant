@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./restaurantList.css";
 
 const RestaurantList = () => {
-    const discount = true;
+    const discount = false;
 
     return (
         <div className="restaurant-list">
@@ -18,7 +18,7 @@ const RestaurantList = () => {
                     Nhà hàng tốt nhất Hải Châu
                 </h3>
             </div>
-            <Link to="/detail" className="restaurant-list__content">
+            <Link to="/detail/:id" className="restaurant-list__content">
                 <img
                     className="list-content__img"
                     src="https://lavenderstudio.com.vn/wp-content/uploads/2017/08/chup-hinh-nha-hang-khach-san-3.png"

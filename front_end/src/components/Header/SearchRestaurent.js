@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -12,16 +13,17 @@ function SearchRestaurent() {
     const [searchValue, setSearchValue] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResule] = useState(true);
+    const [searchRestaurant, setSearchRestaurant] = useState("");
 
     const inputRef = useRef();
 
     const fetchData = (value) => {
-        fetch(
-            `http://localhost:5555/api/restaurant/?page=1&limit=10&populate=resMenuInfor`
-        )
-            .then((res) => res.json())
+        axios
+            .get(
+                `http://localhost:5555/api/restaurant/?page=1&limit=30&populate=resMenuInfor`
+            )
             .then((res) => {
-                const result = res.data.filter((name) => {
+                const result = res.data.data.filter((name) => {
                     const nameFood = name.resname;
                     return (
                         nameFood &&
@@ -40,6 +42,12 @@ function SearchRestaurent() {
         }
         fetchData(searchValue);
     }, [searchValue]);
+
+    useEffect(() => {
+        if (searchRestaurant) {
+            setSearchValue(searchRestaurant);
+        }
+    }, [searchRestaurant]);
 
     const handlClear = () => {
         setSearchValue("");
@@ -65,7 +73,11 @@ function SearchRestaurent() {
                     <WrapperSearch>
                         <div className="search-result" tabIndex="-1" {...attrs}>
                             {searchResult.map((result) => (
-                                <Restaurent key={result._id} data={result} />
+                                <Restaurent
+                                    key={result._id}
+                                    data={result}
+                                    setSearchRestaurant={setSearchRestaurant}
+                                />
                             ))}
                         </div>
                     </WrapperSearch>

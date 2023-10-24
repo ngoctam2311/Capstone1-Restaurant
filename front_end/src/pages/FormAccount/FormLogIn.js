@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./formAccount.css";
 import { isAccountValue, isEmailValid } from "./index.js";
 import ImageAccount from "../../images/imgAccount.png";
+import axios from "axios";
+import { config } from "@fortawesome/fontawesome-svg-core";
 
 const initLoginValue = {
     email: "",
@@ -28,9 +30,18 @@ function FormLogIn() {
         }
 
         setLoginError(error);
-
         return Object.keys(error).length === 0;
     };
+
+    // const loginApi = () => {
+    //     axios
+    //         .post("http://localhost:5555/api/auth/login")
+    //         .then((res) => console.log(res.data));
+    // };
+
+    // useEffect(() => {
+    //     loginApi();
+    // }, []);
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -41,7 +52,7 @@ function FormLogIn() {
         });
     };
 
-    const handleSubmitLogin = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
 
         if (validateRegister()) {
@@ -57,7 +68,7 @@ function FormLogIn() {
             <div className="wrap-form">
                 <div>
                     <h1 className="wrap-form__heading">ĐĂNG NHẬP</h1>
-                    <form className="form-group" onSubmit={handleSubmitLogin}>
+                    <form className="form-group">
                         <div className="wrap-form__input">
                             <input
                                 className="wrap-form__control"
@@ -88,7 +99,12 @@ function FormLogIn() {
                                 </span>
                             )}
                         </div>
-                        <button className="wrap-form__btn">ĐĂNG NHẬP</button>
+                        <button
+                            className="wrap-form__btn"
+                            onClick={handleLogin}
+                        >
+                            ĐĂNG NHẬP
+                        </button>
                     </form>
                     <div className="login-footer">
                         <Link to="/" className="login-footer__forgot">
