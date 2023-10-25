@@ -3,39 +3,30 @@ import Topbar from "./componets/header/Topbar";
 import Sidebar from "./componets/sidebar/Sidebar";
 import Home from "./page/pagehome_ower/home/Home";
 import "./App.css";
-import { BrowserRouter as Router , Switch , Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 import Createprofile from "./page/pagehome_ower/containers/CreateProfile/Createprofile";
 import ProfileRestaurant from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/ProfileRestaurant";
 import Reservations from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/mylist/Reservations";
 
-class App extends React.Component {
-   render() { 
+export default function App()  {
        return (
-        <Router>
+        
+           
             <div className="Main">
                <Topbar/>
                <div className="slide"></div>
                 <div className="container">
-               <Sidebar/>
-                <Switch>
-                    <Route exact path="/">
-                      <Home/>
-                    </Route>
-                    <Route path="/create">
-                        <Createprofile/>
-                    </Route>
-                    <Route path="/profile">
-                         <ProfileRestaurant/>
-                    </Route>
-                    <Route path="/list">
-                         <Reservations/>
-                    </Route>
-               </Switch>
+                <Sidebar/>
+                 <Routes>
+                    <Route path="/" element={<Home/>} />
+                    <Route path="/create" element={<Createprofile/>} />
+                    <Route path="/profile" element={<ProfileRestaurant/>} />
+                    <Route path="/list" element={<Reservations/>} />
+                    
+               </Routes>
              </div>
            </div>
-           </Router>
-       )
-   }
+       
+          
+       );
 }
-
-export default App

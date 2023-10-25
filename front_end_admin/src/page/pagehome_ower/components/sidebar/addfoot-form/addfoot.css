@@ -48,9 +48,29 @@
     border: 1px solid #CDCDCD;
     background: #00665C;
     color: #fff;
+    font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 .button-foot{
     height: 30px;
     margin-left: 10px;
-    
+    display: flex;
+    justify-content: space-between;
+}
+.button-delete-foot{
+    height: 30px;
+    width: 150px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #00665C;
+    color: #fff;
+    margin-right: 15px;
+    font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }

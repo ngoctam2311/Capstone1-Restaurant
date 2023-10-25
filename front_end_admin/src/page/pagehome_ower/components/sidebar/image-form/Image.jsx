@@ -4,7 +4,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 export default function Image() {
   return (
     <div className='image-restaurant'>
-        <span className="title-img">HÌNH ẢNH SÂN BÓNG</span>
+        <span className="title-img">HÌNH ẢNH NHÀ HÀNG</span>
         
         <div className="push-image">
            <label type='file' className='file-upimg'>

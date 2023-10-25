@@ -19,7 +19,7 @@ export default function Addfoot() {
             </div>
         </div>
         <div className="add-foot">
-            <span className="title-foot">Giá Tiền</span>
+            <span className="title-foot">Ảnh món ăn</span>
             <div className="form-foot">
             <label type='file' className='file-upimg'>
             <InsertPhotoIcon/>
@@ -29,6 +29,7 @@ export default function Addfoot() {
         </div>
         <div className="button-foot">
         <button className='button-add-foot'>Thêm món & giá</button>
+        <button className='button-delete-foot'>Xóa</button>
         </div>
         </div> 
     </div>

@@ -15,12 +15,12 @@ export default function Sidebaroption() {
           <p className='name-menu'>Quản lý hồ sơ nhà hàng</p>
         </div>
        <ul className="suvnav">
-                <Link to="/profile">
-                <li className='option'>
+                <Link to="/profile" className='link'>
+                 <li className='option'>
                     <span className="option-text">Hồ Sơ Nhà Hàng</span>
-                </li>
+                  </li>
                 </Link>
-                <Link to="/list">
+                <Link to="/list" className='link'>
                 <li className='option'>
                     <span className="option-text">Danh Sách Đặt Chỗ</span>
                 </li>

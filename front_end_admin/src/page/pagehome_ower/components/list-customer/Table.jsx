@@ -1,6 +1,6 @@
 import React from 'react'
 import DataTable from 'react-data-table-component'
-
+import "./table.css"
 export default function Table() {
   const columns = [
     {
