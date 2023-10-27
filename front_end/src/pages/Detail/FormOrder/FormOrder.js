@@ -49,9 +49,10 @@ function FormOrder() {
     // This function does not let the user select yesterday's date
     function getToday() {
         const today = new Date();
+        console.log(today);
         const year = today.getFullYear();
         let month = today.getMonth() + 1;
-        let day = today.getDate();
+        let day = today.getDate() + 1;
 
         if (month < 10) {
             month = "0" + month;
@@ -158,6 +159,7 @@ function FormOrder() {
                         id="date"
                         type="date"
                         min={minDate}
+                        max={getToday()}
                         onChange={handleChange}
                         name="date"
                         value={orderValue.date}
@@ -179,7 +181,6 @@ function FormOrder() {
                         value={orderValue.time}
                         onChange={handleChange}
                     >
-                        <option value="00:00">00:00</option>
                         <option value="11:00">11:00</option>
                         <option value="11:30">11:30</option>
                         <option value="12:00">12:00</option>

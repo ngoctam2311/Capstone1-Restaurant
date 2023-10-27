@@ -8,18 +8,20 @@ import {
 } from "../pages";
 import { AccountUser, BookUser, CommentUser } from "../pages/ManageUser";
 import { LayoutUser } from "../components/Layout";
+import NotFound from "./NotFound";
 
 export const routes = {
     home: "/",
     detail: "/detail/:id",
     login: "/login",
     register: "/register",
-    restaurantList: "/restaurant-list",
+    restaurantList: "/restaurant-list/:searchValue",
     layoutAccount: "/account",
     accountuser: "/account-manager",
     bookuser: "/bookuser",
     commentUser: "/commentUser",
-    verifyMail: "/:id/verify/",
+    verifyMail: "/verify",
+    notFound: "/*",
 };
 
 // Public routes
@@ -30,6 +32,7 @@ export const publicRoutes = [
     { path: routes.login, component: FormLogIn, layout: null },
     { path: routes.register, component: FormRegister, layout: null },
     { path: routes.verifyMail, component: VerifyMail, layout: null },
+    { path: routes.notFound, component: NotFound, layout: null },
     { path: routes.layoutAccount, component: LayoutUser, layout: LayoutUser },
     { path: routes.accountuser, component: AccountUser, layout: LayoutUser },
     { path: routes.bookuser, component: BookUser, layout: LayoutUser },

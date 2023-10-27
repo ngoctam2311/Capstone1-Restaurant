@@ -81,6 +81,37 @@
     margin-right: 4px;
 }
 
+.register__verify {
+    position: fixed;
+    top: 14px;
+    right: 10px;
+    font-size: 1.8rem;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    animation: rightAni 0.6s linear;
+}
+
+@keyframes rightAni {
+    0% {
+        opacity: 0;
+        transform: translateX(290px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.disabled {
+    margin-top: 40px;
+    margin-left: 30%;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--green-color);
+}
+
 .wrap-form__btn {
     font-size: 1.6rem;
     margin-top: 18px;

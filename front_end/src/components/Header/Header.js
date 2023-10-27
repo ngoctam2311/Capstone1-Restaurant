@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +8,10 @@ import "tippy.js/dist/tippy.css";
 import "./header.css";
 import SearchMap from "./SearchMap";
 import SearchRestaurent from "./SearchRestaurent";
+import { UserContext } from "../../Hooks/UserContext";
 
 function Header() {
-    const currentUser = false;
+    const { user } = useContext(UserContext);
 
     return (
         <header className="wrapp-header">
@@ -21,28 +23,10 @@ function Header() {
                 <div className="search">
                     <SearchMap />
                     <SearchRestaurent />
-                    <Link to="/restaurant-list">
-                        <button className="btn search-btn">Tìm</button>
-                    </Link>
                 </div>
 
                 <div className="account">
-                    {currentUser ? (
-                        <>
-                            <span className="user-name">Văn Hùng</span>
-                            <Tippy
-                                delay={[0, 200]}
-                                content="Tài khoản"
-                                placement="bottom"
-                            >
-                                <Link to="/account">
-                                    <button className="user-avatar">
-                                        <FontAwesomeIcon icon={faUser} />
-                                    </button>
-                                </Link>
-                            </Tippy>
-                        </>
-                    ) : (
+                    {!!user && !!user.auth === false ? (
                         <>
                             <Link to="/login">
                                 <button className="btn login-btn">
@@ -54,6 +38,21 @@ function Header() {
                                     ĐĂNG KÝ
                                 </button>
                             </Link>
+                        </>
+                    ) : (
+                        <>
+                            <span className="user-name">Văn Hùng</span>
+                            <Tippy
+                                delay={[0, 200]}
+                                content="Tài khoản"
+                                placement="bottom"
+                            >
+                                <Link to="/account-manager">
+                                    <button className="user-avatar">
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </button>
+                                </Link>
+                            </Tippy>
                         </>
                     )}
                 </div>

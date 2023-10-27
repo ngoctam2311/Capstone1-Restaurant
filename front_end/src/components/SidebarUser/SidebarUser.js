@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faComment,
@@ -6,11 +7,21 @@ import {
     faBookOpen,
     faHouse,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import "./sidebarUser.css";
 import { routes } from "../../Routes/Routes";
 import Menu, { MenuItem } from "./Menu";
+import { UserContext } from "../../Hooks/UserContext";
 
 const SidebarUser = () => {
+    const { logout } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate(routes.home);
+    };
+
     return (
         <div className="wrap-sidebar">
             <aside className="sidebar">
@@ -36,9 +47,11 @@ const SidebarUser = () => {
                     <MenuItem to={routes.commentUser} title="Đánh giá của tôi">
                         <FontAwesomeIcon icon={faComment} />
                     </MenuItem>
-                    <MenuItem to={routes.home} title="Đăng xuất">
-                        <FontAwesomeIcon icon={faArrowRightFromBracket} />
-                    </MenuItem>
+                    <div onClick={handleLogout}>
+                        <MenuItem to={routes.home} title="Đăng xuất">
+                            <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                        </MenuItem>
+                    </div>
                 </Menu>
             </aside>
         </div>

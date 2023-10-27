@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./formAccount.css";
 import { isAccountValue, isEmailValid } from "./index.js";
 import ImageAccount from "../../images/imgAccount.png";
-import axios from "axios";
-import { config } from "@fortawesome/fontawesome-svg-core";
+import { routes } from "../../Routes/Routes";
+import { UserContext } from "../../Hooks/UserContext";
+// import { config } from "@fortawesome/fontawesome-svg-core";
 
 const initLoginValue = {
     email: "",
@@ -14,6 +16,9 @@ const initLoginValue = {
 function FormLogIn() {
     const [loginValue, setLoginValue] = useState(initLoginValue);
     const [loginError, setLoginError] = useState({});
+
+    const { loginContext } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const validateRegister = () => {
         const error = {};
@@ -33,16 +38,6 @@ function FormLogIn() {
         return Object.keys(error).length === 0;
     };
 
-    // const loginApi = () => {
-    //     axios
-    //         .post("http://localhost:5555/api/auth/login")
-    //         .then((res) => console.log(res.data));
-    // };
-
-    // useEffect(() => {
-    //     loginApi();
-    // }, []);
-
     const handleChange = (e) => {
         const { value, name } = e.target;
 
@@ -52,13 +47,39 @@ function FormLogIn() {
         });
     };
 
-    const handleLogin = (e) => {
+    // useEffect(() => {
+    //     let token = localStorage.getItem("login");
+    //     if (token) {
+    //         navigate(routes.home);
+    //     }
+    // }, []);
+
+    const handleSubmitLogin = async (e) => {
         e.preventDefault();
 
         if (validateRegister()) {
-            console.log(loginValue);
+            try {
+                let response = await axios.post(
+                    "http://localhost:5555/api/auth/login",
+                    loginValue,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Accept: "application/json",
+                        },
+                    }
+                );
+                console.log("Formlogin: ", response.data.token);
+                loginContext(response.data.status, response.data.token);
+                navigate(routes.home);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+            // finally {
+            //     setIsLoading(false);
+            // }
         } else {
-            console.log("invalid");
+            console.log("Invalid form");
         }
     };
 
@@ -68,7 +89,7 @@ function FormLogIn() {
             <div className="wrap-form">
                 <div>
                     <h1 className="wrap-form__heading">ĐĂNG NHẬP</h1>
-                    <form className="form-group">
+                    <form className="form-group" onSubmit={handleSubmitLogin}>
                         <div className="wrap-form__input">
                             <input
                                 className="wrap-form__control"
@@ -99,18 +120,16 @@ function FormLogIn() {
                                 </span>
                             )}
                         </div>
-                        <button
-                            className="wrap-form__btn"
-                            onClick={handleLogin}
-                        >
-                            ĐĂNG NHẬP
-                        </button>
+                        <button className="wrap-form__btn">ĐĂNG NHẬP</button>
                     </form>
                     <div className="login-footer">
                         <Link to="/" className="login-footer__forgot">
                             Quên Mật Khẩu?
                         </Link>
-                        <Link to="/register" className="login-footer__register">
+                        <Link
+                            to={routes.register}
+                            className="login-footer__register"
+                        >
                             Đăng ký
                         </Link>
                     </div>

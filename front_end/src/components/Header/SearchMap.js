@@ -4,43 +4,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faXmark } from "@fortawesome/free-solid-svg-icons";
 import HeadlessTippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
+import { useLocation } from "react-router-dom";
 
 import "./header.css";
 import Maps from "../Search/Maps";
 import WrapperSearch from "../Search/WrapperSearch";
-import useDebounce from "../../Hooks/useDebounce";
 
 function SearchMap() {
+    const location = useLocation();
+    // const { address } = location.data;
     const [searchValue, setSearchValue] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [selectDistrict, setSelectDistrict] = useState("");
 
+    // console.log(searchResult.data);
+
     const inputRef = useRef();
 
-    const fetchData = (value) => {
-        axios
-            .get(
-                `http://localhost:5555/api/restaurant/?page=1&limit=10&populate=resMenuInfor`
-            )
-            .then((res) => {
-                const result = res.data.data.filter((map) => {
-                    const { district } = map.address;
-                    return (
-                        district &&
-                        value &&
-                        district.toLowerCase().includes(value)
-                    );
-                });
-                // console.log(result);
-                setSearchResult(result);
-            });
+    const fetchData = async (value) => {
+        const { data } = await axios.get(
+            `http://localhost:5555/api/restaurant/search?search=${encodeURIComponent(
+                value
+            )}&page=1&limit=1`
+        );
+        // .then((data) => {
+        // const result = res.data.data.filter((map) => {
+        //     const { district } = map.address;
+        //     return (
+        //         district &&
+        //         value &&
+        //         district.toLowerCase().includes(value)
+        //     );
+        // });
+        //  console.log(result);
+        // setSearchResult(data.data);
+        // });
+        setSearchResult(data.data);
     };
 
     useEffect(() => {
-        if (searchValue && !searchValue.trim()) {
-            fetchData(searchValue);
+        if (!searchValue.trim()) {
+            return;
         }
+        fetchData(searchValue);
     }, [searchValue]);
 
     // Thay đổi SearchValue

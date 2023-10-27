@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./formAccount.css";
 import { isAccountValue, isEmailValid } from "./index.js";
 import ImageAccount from "../../images/imgAccount.png";
@@ -12,19 +11,18 @@ const initRegisterValue = {
     phone: "",
     email: "",
     password: "",
-    role: {
-        name: "",
-    },
+    role: "",
 };
 
 function FormRegister() {
     const [registerValue, setRegisterValue] = useState(initRegisterValue);
     const [registerError, setRegisterError] = useState({});
-    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [resgistered, setResgistered] = useState("");
+
     // error checking for fields
     const validateRegister = () => {
         const error = {};
-
         if (isAccountValue(registerValue.firstName)) {
             error["firstName"] = "Vui lòng nhập Họ của bạn";
         }
@@ -44,7 +42,7 @@ function FormRegister() {
         if (isAccountValue(registerValue.password)) {
             error["password"] = "Vui lòng nhập mật khẩu";
         }
-        if (isAccountValue(registerValue.role.name)) {
+        if (isAccountValue(registerValue.role)) {
             error["role"] = "Vui lòng chọn người dùng hoặc chủ nhà hàng";
         }
         setRegisterError(error);
@@ -54,26 +52,17 @@ function FormRegister() {
 
     const handleChange = (e) => {
         const { value, name } = e.target;
-
-        if (name === "role") {
-            setRegisterValue({
-                ...registerValue,
-                role: {
-                    name: value,
-                },
-            });
-        } else {
-            setRegisterValue({
-                ...registerValue,
-                [name]: value,
-            });
-        }
+        setRegisterValue({
+            ...registerValue,
+            [name]: value,
+        });
     };
 
     const handleSubmitRegister = async (e) => {
         e.preventDefault();
 
         if (validateRegister()) {
+            setIsLoading(true);
             try {
                 let response = await axios.post(
                     "http://localhost:5555/api/auth/register",
@@ -85,11 +74,17 @@ function FormRegister() {
                         },
                     }
                 );
-                console.log(response.data);
+                // console.log("FormRegister: ", response.data);
                 localStorage.setItem("register", JSON.stringify(response.data));
-                // navigate(`/${response.data.data.user._id}/verify/`);
+                setResgistered("Vui lòng kiểm tra email để xác thực");
+
+                setTimeout(() => {
+                    setResgistered("");
+                }, 5000);
             } catch (error) {
                 console.error("Error:", error);
+            } finally {
+                setIsLoading(false);
             }
         } else {
             console.log("Invalid form");
@@ -100,6 +95,9 @@ function FormRegister() {
         <div className="form-account">
             <img className="form-account__img" src={ImageAccount} alt="" />
             <div className="wrap-form">
+                {resgistered && (
+                    <span className="register__verify">{resgistered}</span>
+                )}
                 <div>
                     <h1 className="wrap-form__heading">Đăng Ký Tài Khoản</h1>
                     <form
@@ -198,7 +196,7 @@ function FormRegister() {
                                         className="wrap-form__checked"
                                         type="radio"
                                         name="role"
-                                        value="restaurantOwners"
+                                        value="restaurant-owner"
                                         onChange={handleChange}
                                     />
                                     Chủ Nhà Hàng
@@ -210,7 +208,11 @@ function FormRegister() {
                                 </span>
                             )}
                         </div>
-                        <button className="wrap-form__btn">ĐĂNG KÝ</button>
+                        {isLoading ? (
+                            <span className="disabled">Vui lòng chờ...</span>
+                        ) : (
+                            <button className="wrap-form__btn">ĐĂNG KÝ</button>
+                        )}
                     </form>
                 </div>
             </div>
