@@ -36,7 +36,7 @@ export default function Createprofile() {
               </div>
               <div className="footer-button">
              <div className="button">
-                 <button /*onSubmit={(e)=> submit(e)}*/ className='save'>Lưu lại</button>
+                 <button className='save'>Lưu lại</button>
                  <button className='cancel'>Hủy bỏ</button>
               </div>
              </div>

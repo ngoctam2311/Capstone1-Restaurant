@@ -1,73 +1,80 @@
-import React from 'react'
-import { useState , useEffect} from 'react'
+import React, { useEffect, useState ,useRef} from 'react'
 import "./inforestaurant.css"
-import Axios from 'axios'
+import axios from 'axios'
 
 export default function Inforestaurant() {
-  // const url = "http://localhost:5556/api/restaurant/create"
-  // const [data , setData] = useState({
-  //   name:"",
-  //   address:"",
-    
-  // })
-  // function submit(e){
-  //   e.preventDefault()
-  //   Axios.post(url,{
-  //      name:data.name,
-  //      address:data.address,
-       
-  //   })
-  //   .then(res=>{
-  //     console.log(res.data)
-  //   })
-  // }
-  // function handle(e){
-  //   const newdata ={...data}
-  //   newdata[e.target.id] = e.target.value
-  //   setData(newdata)
-  //   console.log(newdata)
-  // }
-  const [ownerAddress,setOwnerAddress] = useState("")
-  const [ownerCity,setOwnerCity] = useState("")
-  const [list,setlist] = useState([{'address':'','city':''}])
+  const [resName,setresName] = useState('')
+  const [resStreet,setresStreet] = useState('')
+  const [resAddress,setresAddress] = useState([])
+  
+  const inputRef = useRef(null)
+  const [image,setImage] = useState("")
 
+  // get api
   useEffect(()=>{
-    const fetchData = async ()=>{
-      const response = await fetch(`http://localhost:5556/api/restaurant/?page=1&limit=10&populate=resMenuInfor`)
-      const newdata = await response.json();
-      setlist(newdata);
-      console.log(newdata)
-    };
-    fetchData();
+    axios.get('http://localhost:5556/api/restaurant/')
+    .then(res => setresAddress(res.data.data))
+    .catch(err => console.log(err))
   },[])
+
+  // img
+  
+  const handleImageClick = ()=>{
+    inputRef.current.click();
+  }
+  const handleImageChange = (event)=>{
+    const file = event.target.files[0]
+    console.log(file)
+    setImage(event.target.files[0])
+  }
+  
   return (
     <div className='info-restaurant'>
         <span className='title-name'>THÔNG TIN NHA HÀNG</span>
          <form className="infoForm">
            <div className="infoItem">
              <label >Tên Nhà Hàng</label>
-             <input  type="text" className='text-input'/>
+             <input  type="text" className='text-input' value={resName} onChange={e=>setresName(e.target.value)}/>
            </div>
            <div className="infoItem">
              <label >Địa Chỉ(cụ thể)</label>
-             <input  type="text" className='text-input'/>
+             <input  type="text" className='text-input' value={resStreet} onChange={e=>setresStreet(e.target.value)}/>
            </div>
            <div className="infoItem">
             <label >Tỉnh/Thành Phố</label>
-              <select value={ownerCity} onChange={e=> setOwnerCity(e.target.value)} className='text-input' >
-                 {/* {newdata.map(city=>(
-                  <option value="" key={city._id}>{city.address}</option>
-                 ))} */}
+              <select className='text-input'  > 
+                 <option value={''}>Chọn thành phố</option>
+                  {
+                    resAddress.map((datacity)=>(
+                      <option value={''} key={datacity._id}>{datacity.address.city}</option>
+                    
+                    ))
+                  }
               </select>
            </div>
            <div className="infoItem">
              <label >Quận/huyện</label>
-             <select value={ownerAddress} onChange={e=> setOwnerAddress(e.target.value)} className='text-input' placeholder='chọn quận/huyện'></select>
+             <select  className='text-input' >
+               <option value={''}>Chọn Quận huyện</option>
+                  {
+                    resAddress.map((datacity)=>(
+                      <option value={''} key={datacity._id}>{datacity.address.district}</option>
+                    
+                    ))
+                  }
+             </select>
            </div>
-           <div className="infoItem">
+           <div className="infoItem" onClick={handleImageClick}>
              <label>Ảnh đại diện</label>
              <label type="file" className='file-name'>Tải file
-             <input type="file" className='file-img'/>
+             {/* <img src='./photo.png' alt=''></img> */}
+              {image ? (
+                <img src='./photo.png' alt='' ></img> 
+              ): (
+                <img src='./photo.png' alt='' ></img> 
+              )
+             }
+             <input className='file-img' type="file" ref={inputRef}  onChange={handleImageChange}/>
              </label>
               
            </div>
