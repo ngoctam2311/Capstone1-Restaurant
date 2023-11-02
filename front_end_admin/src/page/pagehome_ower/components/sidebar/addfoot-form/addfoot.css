@@ -65,7 +65,7 @@ line-height: normal;
     width: 150px;
     border-radius: 2px;
     border: 1px solid #CDCDCD;
-    background: #00665C;
+    background: #9A2145;
     color: #fff;
     margin-right: 15px;
     font-family: Inter;
@@ -74,11 +74,12 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
-.img-display-before{
-    height: 40px;
+
+.img-display{
     width: 40px;
+    height: 40px;
 }
-.file-upimg{
-    height: 40px;
+.form-foot-img{
     width: 40px;
+    height: 40px;
 }

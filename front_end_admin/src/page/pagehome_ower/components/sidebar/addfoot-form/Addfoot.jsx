@@ -63,11 +63,11 @@ export default function Addfoot() {
         </form>
         <div className="add-foot">
             <span className="title-foot">Ảnh món ăn</span>
-            <div className="form-foot">
-            <label type='file' className='file-upimg' onClick={handleImageClick}>
+            <div className="form-foot-img" onClick={handleImageClick}>
+            <label type='file' className='file-upimg'>
             <img src='./photo.png' alt=''></img> 
               {image ? (
-                <img src={URL.createObjectURL(image)} alt='' className='img-display-before'></img> 
+                <img src={URL.createObjectURL(image)} alt='' className='img-display'></img> 
               ): (
                 <img src='./photo.png' alt=''></img> 
               )
