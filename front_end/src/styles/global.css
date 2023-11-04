@@ -1,0 +1,87 @@
+:root {
+    --green-color: #00665c;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --background-color: #9fd5d0;
+    --border-color: #ccc;
+    --hover-color: #e4edeb;
+    --matte-color: #999;
+
+    --max-width-body: 1200px;
+
+    --font-size-heading: 2.4rem;
+
+    --default-layout-header-height: 54px;
+    --max-header-height: 70px;
+}
+
+::selection {
+    background-color: var(--background-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    text-rendering: optimizeSpeed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+/* ------- CSS For Slick button  */
+/* ----- Css for Slick button ----- */
+.slick-prev:before,
+.slick-next:before {
+    margin-top: 2px;
+}
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--border-color);
+    background-color: #ecedef;
+    padding-top: 2px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: auto;
+    opacity: 1;
+}
+
+.main-content {
+    margin-top: var(--max-header-height);
+}
