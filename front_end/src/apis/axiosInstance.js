@@ -1,15 +1,15 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const axiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+	baseURL: "https://foodie-finder-api.up.railway.app",
 });
 
 axiosInstance.interceptors.request.use(async (config) => {
 	let accessToken = localStorage.getItem('accessToken');
 	if (accessToken) {
 		let token;
-		const decodedToken = jwt_decode(accessToken);
+		const decodedToken = jwtDecode(accessToken);
 		if (decodedToken.exp * 1000 < new Date().getTime()) {
 			console.log('accessToken het han');
 			token = await auth.currentUser?.getIdToken();
