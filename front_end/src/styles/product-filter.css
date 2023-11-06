@@ -1,0 +1,287 @@
+.bg-blue {
+  background: #3c74b9;
+}
+
+.bg-silver,
+.bg-white {
+  background: #e3e5e3;
+}
+
+.bg-green {
+  background: #00ab55;
+}
+.bg-grey {
+  background: #5e5e59;
+}
+
+.bg-pink {
+  background: #f7e3de;
+}
+.bg-red {
+  background: #ef262c;
+}
+
+.bg-yellow {
+  background: #ffae00;
+}
+.restaurant-filter {
+  position: relative;
+  width: 100%;
+}
+.shop-container {
+  margin-top: 3.6rem;
+  margin-bottom: 4rem;
+}
+strong {
+  font-weight: 600;
+}
+
+.filter-option,
+.card-item {
+  padding: 2.4rem;
+  background-color: #F0F0F0;
+  font-size: 1.5rem;
+  /* border-radius: 8px; */
+  border: 1px solid #e2e5eb;
+}
+
+.filter-option h4 {
+  line-height: 20px;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+  text-transform: uppercase;
+}
+
+.category-list li {
+  margin-bottom: 1.5rem;
+  color: #6a7285;
+  padding-left: 3rem;
+}
+
+#product-category {
+  margin-bottom: 3.6rem;
+  border-radius: 8px;
+}
+.category-list li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e2e5eb;
+}
+
+.category-list li:hover {
+  cursor: pointer;
+}
+
+.category-list li:hover::before {
+  background-color: #ef262c;
+  border: none;
+  content: "\2713";
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.form-range {
+  margin-bottom: 2.5rem;
+}
+
+.form-label span {
+  color: #ef262c;
+}
+.form-label {
+  margin-bottom: 2rem;
+}
+
+.color-filter-list {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  height: 3.5rem;
+}
+
+.color-filter-list li {
+  padding: 0.3rem;
+  border-radius: 50%;
+  border: 1px solid #e2e5eb;
+  background-color: #fff;
+  height: 100%;
+}
+.color-filter-list li div {
+  width: 2.7rem;
+  /* height: 2.5rem; */
+  height: 100%;
+  border-radius: 50%;
+}
+
+.color-filter-list li:hover {
+  border: 1px solid #ef262c;
+  cursor: pointer;
+}
+
+#price-filter {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#submit-price-fillter {
+  display: inline-block;
+  width: 100%;
+  /* background: linear-gradient(225deg, #dd2955 0%, #f1592a 100%); */
+  background-color: #e8512a;
+  color: #fff;
+  font-weight: 600;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+#submit-price-fillter:hover {
+  /* background: linear-gradient(225deg, #f1592a 0%, #dd2955 100%); */
+  background-color: #ba3614;
+}
+
+.prod-summary {
+  font-size: 1.5rem;
+  padding-left: 4rem;
+  padding-right: 2rem;
+  padding-bottom: 3rem;
+  /* border-bottom: 1px solid #d9dde3; */
+}
+.prodDetail-title {
+  margin-bottom: 3rem;
+}
+.prod-meta {
+  display: flex;
+  font-size: 1.3rem;
+  color: #818ea0;
+}
+.prod-model::after {
+  content: "|";
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
+}
+.prod-shortdesc {
+  color: #818ea0;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  line-height: 1.4;
+}
+
+.prod-price {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.prod-newprice {
+  color: #ef262c;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.prod-oldprice {
+  color: #818ea0;
+  font-size: 2rem;
+  text-decoration: line-through;
+}
+
+.prod-img {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border: 1px solid #d9dde3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prod-img img {
+  width: 100%;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  /* padding: 8px; */
+}
+
+.resCard-content {
+  border: 1px solid #d7d7d7;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.opentime-status {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 1;
+}
+
+.opentime-status:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.opentime-status .stt {
+  border-radius: 50%;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+.stt-online {
+  color: rgb(35, 152, 57);
+  background-color: rgb(35, 152, 57);
+}
+.stt-offline {
+  color: rgb(211, 211, 211);
+  background-color: rgb(211, 211, 211);
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* width: 150px */
+  width: 100%;
+  display: inline-block;
+}
+
+.res-address {
+  font-size: 1.3rem;
+  color: #818ea0;
+  font-weight: 500;
+}
+
+.prod-card-large:hover {
+  transition: box-shadow 0.25s;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-radius: 12px;
+}
+
+.restaurant-tag {
+  padding: 6px 8px;
+  color: white;
+  background-color: #00665c;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1.4rem;
+}

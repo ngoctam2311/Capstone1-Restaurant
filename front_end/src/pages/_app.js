@@ -12,9 +12,10 @@ import "../styles/footer.css";
 import "../styles/header.css";
 import "../styles/global.css";
 import "../styles/search.css";
-import "../styles/content.css"
-import "../styles/form-account.css"
-import CloseIcon from '@mui/icons-material/Close';
+import "../styles/content.css";
+import "../styles/form-account.css";
+import "../styles/product-filter.css";
+import CloseIcon from "@mui/icons-material/Close";
 // const useSnackbarStyles = makeStyles()(() => ({
 //   root: {
 //     marginTop: 50,
@@ -48,13 +49,27 @@ export default function RootLayout({ Component, pageProps }) {
           //   }}
         >
           {isAdminRoutes ? (
-            <DefaultLayout>
-              <Component {...pageProps} />
-            </DefaultLayout>
+            <main>
+              <style jsx global>{`
+                html {
+                  font-family: ${inter.style.fontFamily};
+                }
+              `}</style>
+              <DefaultLayout>
+                <Component {...pageProps} />
+              </DefaultLayout>
+            </main>
           ) : (
-            <DefaultLayout>
-              <Component {...pageProps} />
-            </DefaultLayout>
+            <main>
+              <style jsx global>{`
+                html {
+                  font-family: ${inter.style.fontFamily};
+                }
+              `}</style>
+              <DefaultLayout>
+                <Component {...pageProps} />
+              </DefaultLayout>
+            </main>
           )}
         </SnackbarProvider>
       </ModeProvider>
