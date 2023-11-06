@@ -9,17 +9,17 @@ export const formatVND = (num) => {
 
 const STAR_COUNT = 5;
 export const renderRating = (value) => {
-  const stars = Array.from({ length: STAR_COUNT }, () => (
-    <StarBorder className="yellow" fontSize="large" />
+  const stars = Array.from({ length: STAR_COUNT }, (_, idx) => (
+    <StarBorder key={idx} className="yellow" fontSize="large" />
   ));
   let i;
   for (i = 0; i < value; i++) {
     // this will loop Math.floor(value) times
-    stars[i] = <Star className="yellow" fontSize="large" />;
+    stars[i] = <Star key={i} className="yellow" fontSize="large" />;
   }
 
   if (value % 1 != 0)
     // if value is a decimal, add a half star
-    stars[i - 1] = <StarHalf className="yellow" fontSize="large" />;
+    stars[i - 1] = <StarHalf key={i} className="yellow" fontSize="large" />;
   return <>{stars}</>;
 };

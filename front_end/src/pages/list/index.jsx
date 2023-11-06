@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Filter from "../../components/list/filter";
-import RestaurantCard from "../../components/list/restuarant-card";
+import RestaurantCard from "../../components/list/restaurant-card";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // ------------- FAKE DATA ------------------------------
