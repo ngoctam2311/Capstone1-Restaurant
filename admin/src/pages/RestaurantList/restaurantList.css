@@ -1,0 +1,124 @@
+.restaurantListTable {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.restaurantListTableRow {
+    text-align: left;
+}
+
+thead .restaurantListTableRow:nth-child(1) {
+    font-weight: 600;
+    text-align: center;
+    background-color: #e9dede;
+}
+
+.restaurantListCol {
+    padding: 10px;
+}
+
+.restaurantListCol:nth-child(1) {
+    text-align: center;
+    width: 46px;
+}
+
+.restaurantListCol:nth-child(2) {
+    width: 240px;
+}
+
+.restaurantListCol:nth-child(3) {
+    width: 250px;
+}
+
+.restaurantListCol:nth-child(4) {
+    text-align: center;
+    width: 100px;
+}
+
+.restaurantListCol:nth-child(5) {
+    text-align: center;
+    width: 100px;
+}
+
+.restaurantListCol:nth-child(6) {
+    text-align: center;
+    width: 48px;
+}
+
+.restaurantListCol:nth-child(7) {
+    text-align: center;
+    width: 110px;
+}
+
+.restaurantListCol:nth-child(8) {
+    text-align: center;
+    width: 90px;
+}
+
+.restaurantListCol:nth-child(9) {
+    width: 160px;
+}
+
+.restaurantListCol:nth-child(10) {
+    width: 46px;
+    padding: 0;
+}
+
+.restaurantListCol-btn {
+    padding: 8px;
+    border-radius: 6px;
+    color: var(--white-color);
+    background-color: #d97373;
+}
+
+.unLock,
+.lockUp {
+    color: var(--white-color);
+    padding: 2px 12px;
+    border-radius: 10px;
+    margin-right: 4px;
+}
+
+.unLock {
+    background-color: #47ad47;
+}
+
+.lockUp {
+    background-color: #d97373;
+}
+
+.tableRowIcon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.UserListMenu {
+    margin-top: 4px;
+    position: absolute;
+    width: 120px;
+    color: var(--white-color);
+    background-color: #84c884;
+}
+
+.UserListItem {
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.UserListItem:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.UserListItem:last-child {
+    background-color: #d97373;
+}
+
+.UserListItemIcon {
+    color: var(--black-color);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-right: 4px;
+}

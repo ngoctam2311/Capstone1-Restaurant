@@ -1,0 +1,111 @@
+.sidebar {
+    width: 320px;
+    background-color: var(--green-color);
+}
+
+.sidebar__heading {
+    text-align: center;
+}
+
+.sidebar-avatar__img {
+    margin: 30px 0;
+    width: 130px;
+    height: 130px;
+}
+
+.name-owner {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white-color);
+}
+
+.function-name {
+    font-size: 26px;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+.sideMenu {
+    padding: 10px 20px;
+}
+
+.sidebarList-item {
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    width: 250px;
+}
+
+.sidebarList-item:hover {
+    background-color: #50e5d3;
+}
+
+.img-restaurant {
+    margin: 30px;
+}
+
+.imgrestaurant {
+    height: 220px;
+}
+
+.sidebarIcon {
+    color: var(--white-color);
+    margin-right: 5px;
+    font-size: 30px !important;
+}
+
+.name-menu {
+    margin-top: 5px;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+.dropdown {
+    float: right;
+    color: #2f88ff;
+    font-size: 2.2rem;
+}
+
+/* css sidebaroption */
+
+.optionicon {
+    user-select: none;
+    transition: transform 0.3s;
+}
+
+.suvnav {
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+}
+
+.sidebaroption.open .optionicon .dropdown {
+    transform: rotate(180deg);
+}
+
+.sidebaroption.open .name-menu {
+    overflow: hidden;
+}
+
+.sidebaroption.open .suvnav {
+    height: auto;
+}
+
+.option {
+    background-color: var(--white-color);
+    margin-top: 2px;
+    width: 100%;
+    padding: 10px 0;
+    border: solid 1px var(--black-color);
+}
+
+.option:hover {
+    background-color: #2f88ff;
+}
+
+.option-text {
+    color: var(--black-color);
+    padding: 0 30px;
+    font-weight: 500;
+}
