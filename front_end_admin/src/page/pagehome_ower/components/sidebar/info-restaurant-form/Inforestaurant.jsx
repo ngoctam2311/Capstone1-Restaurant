@@ -3,15 +3,14 @@ import "./inforestaurant.css"
 import axios from 'axios'
 
 export default function Inforestaurant() {
-  const [infoRes,setInfores] = useState({
-    resname:"",
-    street:"",
-    district:"",
-    city:""
-  })
+  const [infoRes,setInfores] = useState(
+    {
+     resname:"",
+     street:"",
+     district:"",
+     city:"",
+   })
   const [resAddress,setresAddress] = useState([])
-  
-  const inputRef = useRef(null)
   const [image,setImage] = useState("")
   // get api
   useEffect(()=>{
@@ -19,58 +18,44 @@ export default function Inforestaurant() {
     .then(res => setresAddress(res.data.data))
     .catch(err => console.log(err))
   },[])
-  // post resname or address
- const url ='http://localhost:5556/api/restaurant/create'
- function submit(e){
-  e.prevenDefault();
-  axios.post(url,{
-      resname: infoRes.resname,
-      street: infoRes.street,
-      district: infoRes.district,
-      city: infoRes.city
 
-  })
-  .then(res =>{
-      console.log(res.infoRes)
-   })
-   }
   // img
-  const handleImageClick = ()=>{
-    inputRef.current.click();
-  }
   const handleImageChange = (event)=>{
     const file = event.target.files[0]
     console.log(file)
     setImage(event.target.files[0])
   }
-  // post
-  function handle(e){
-    const newdata = {...infoRes}
-    newdata[e.target.id] = e.target.value
-    setInfores(newdata)
-    console.log(newdata)
-}
+
+  // input post
+  const handleInput = (e)=>{
+ 
+     setInfores(() =>{
+       const data = {...infoRes}
+       data[e.target.name] = e.target.value;
+       console.log(data)
+     })
+    }
+  
   return (
     <div className='info-restaurant'>
         <span className='title-name'>THÔNG TIN NHA HÀNG</span>
          <form className="infoForm">
-          
-           <div className="infoItem" onSubmit={(e)=> submit(e)}>
+           <div className="infoItem" >
              <label >Tên Nhà Hàng</label>
-             <input  type="text" className='text-input'  id='resname'  onChange={(e)=> handle(e)} value={infoRes.resname}/>
+             <input  type="text" className='text-input' name='resname' onChange={handleInput}/>
            </div>
            <div className="infoItem">
              <label >Địa Chỉ(cụ thể)</label>
-             <input  type="text" className='text-input' id='street' onChange={(e)=> handle(e)} value={infoRes.street}  />
+             <input  type="text" className='text-input' name='street' onChange={handleInput}/>
            </div>
 
            <div className="infoItem">
-            <label >Tỉnh/Thành Phố</label>
-              <select className='text-input'  > 
+            <label >Tỉnh/Thành Phố</label >
+              <select className='text-input' name='city' onChange={handleInput} > 
                  <option value={''}>Chọn thành phố</option>
                   {
                     resAddress.map((datacity)=>(
-                      <option value={''} key={datacity._id}>{datacity.address.city}</option>
+                      <option value={datacity.address.city} >{datacity.address.city}</option>
                     
                     ))
                   }
@@ -78,27 +63,20 @@ export default function Inforestaurant() {
            </div>
            <div className="infoItem">
              <label >Quận/huyện</label>
-             <select  className='text-input' >
+             <select  className='text-input' name='district' onChange={handleInput} >
                <option value={''}>Chọn Quận huyện</option>
                   {
                     resAddress.map((datacity)=>(
-                      <option value={''} key={datacity._id}>{datacity.address.district}</option>
-                    
+                      <option value={datacity.address.district} key={datacity._id}>{datacity.address.district}</option>
+                      
                     ))
                   }
              </select>
            </div>
-           <div className="infoItem" onClick={handleImageClick}>
+           <div className="infoItem">
              <label>Ảnh đại diện</label>
              <label type="file" className='file-name'>Tải file
-             {/* <img src='./photo.png' alt=''></img> */}
-              {image ? (
-                <img src='./photo.png' alt='' ></img> 
-              ): (
-                <img src='./photo.png' alt='' ></img> 
-              )
-             }
-             <input className='file-img' type="file" ref={inputRef}  onChange={handleImageChange}/>
+             <input className='file-img' type="file"  onChange={handleImageChange}/>
              </label>
               
            </div>

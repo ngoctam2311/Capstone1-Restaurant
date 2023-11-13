@@ -18,7 +18,7 @@ export default function Createprofile() {
          <div className="maincontent">
             <div className="listcontent">
             <div className="information-restaurant">
-                    <Inforestaurant/>
+                    <Inforestaurant />
               </div>
               <div className="description-restaurant">
                      <Desrestaurant/>
