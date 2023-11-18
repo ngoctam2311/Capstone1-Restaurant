@@ -29,7 +29,7 @@ export default function Image() {
               )
              }
              <UploadIcon className='upload-img'/>
-             <input type="file" className='file-img' ref={inputRef}  onChange={handleImageChange}/>
+             <input type="file" className='file-img-image' ref={inputRef}  onChange={handleImageChange}/>
            </label>
              
         </div>

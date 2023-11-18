@@ -11,7 +11,7 @@ export default function Inforestaurant() {
      city:"",
    })
   const [resAddress,setresAddress] = useState([])
-  const [image,setImage] = useState("")
+  
   // get api
   useEffect(()=>{
     axios.get('http://localhost:5556/api/restaurant/')
@@ -20,6 +20,12 @@ export default function Inforestaurant() {
   },[])
 
   // img
+  const inputRef = useRef(null)
+  const [image,setImage] = useState("")
+
+  const handleImageClick = ()=>{
+    inputRef.current.click();
+  }
   const handleImageChange = (event)=>{
     const file = event.target.files[0]
     console.log(file)
@@ -75,8 +81,9 @@ export default function Inforestaurant() {
            </div>
            <div className="infoItem">
              <label>Ảnh đại diện</label>
-             <label type="file" className='file-name'>Tải file
-             <input className='file-img' type="file"  onChange={handleImageChange}/>
+             <label  className='file-name' onClick={handleImageClick}>
+              {image ? image.name : "Tải file"}
+             <input  className='file-img-info' type="file" ref={inputRef} onChange={handleImageChange}/>
              </label>
               
            </div>

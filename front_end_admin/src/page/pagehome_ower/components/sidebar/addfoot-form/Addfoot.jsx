@@ -1,11 +1,11 @@
 import React, { useState ,useRef} from 'react'
 import "./addfoot.css"
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import axios from 'axios'
+
 
 
 export default function Addfoot() {
-   const url='http://localhost:5556/api/restaurant/create'
+
    
    const [addfoot, setaddfoot] = useState({
     typeOfRes:"",
@@ -19,16 +19,7 @@ export default function Addfoot() {
         console.log(newdata)
     }
 
-    function submit(e){
-        e.prevenDefault();
-        axios.post(url,{
-            typeOfRes: addfoot.typeOfRes,
-            averagePrice:addfoot.averagePrice
-        })
-        .then(res =>{
-            console.log(res.addfoot)
-        })
-    }
+   
     
     const inputRef = useRef(null)
     const [image,setImage] = useState("")
@@ -47,7 +38,7 @@ export default function Addfoot() {
     <div className="add-foot-restaurant">
         <span className="title-name">THÊM MÓN ĂN</span>
         <div className="all-add-foot">
-        <form onSubmit={(e)=> submit(e)}>
+        <form >
         <div className="add-foot">
             <span className="title-foot">Món ăn</span>
             <div className="form-foot">
@@ -65,15 +56,9 @@ export default function Addfoot() {
             <span className="title-foot">Ảnh món ăn</span>
             <div className="form-foot-img" onClick={handleImageClick}>
             <label type='file' className='file-upimg'>
-            <img src='./photo.png' alt=''></img> 
-              {image ? (
-                <img src={URL.createObjectURL(image)} alt='' className='img-display'></img> 
-              ): (
-                <img src='./photo.png' alt=''></img> 
-              )
-             }
-             <InsertPhotoIcon/>
-             <input type="file" className='file-img' ref={inputRef}  onChange={handleImageChange}/>
+            
+            {image ? image.name : <InsertPhotoIcon/>}
+             <input type="file" className='file-img-add' ref={inputRef}  onChange={handleImageChange}/>
              </label>
             </div>
         </div>

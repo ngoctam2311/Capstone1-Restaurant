@@ -38,8 +38,8 @@
    color: black;
 
 }
-.file-img{
-    display: none !important;
+.file-img-info{
+    display: none;
 }
 .file-name{
     margin-top: 10px;
