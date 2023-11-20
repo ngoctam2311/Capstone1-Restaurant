@@ -12,10 +12,25 @@ const Approve = () => {
     }, []);
 
     const fetchData = async () => {
-        // await axios
-        //     .get(`http://localhost:3000/api/restaurant/?page=1&limit=10`)
-        //     .then((res) => setData(res.data.data));
+        await axios
+            .get(`http://localhost:3000/api/restaurant/pending`)
+            .then((res) => {
+                setData(res.data.data)
+                // console.log(res.data.data)
+            });
     };
+
+    const fetchRespond = async (restaurantId, action) => {
+        await axios.patch(`http://localhost:3000/api/restaurant/respond`, {
+            restaurantId,
+            action
+        })
+        .then((res) => {
+            fetchData();
+            setData(res.data.data)
+            // console.log(res.data.data)
+        }) 
+    }
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -38,6 +53,7 @@ const Approve = () => {
                     <select className="homeGroupInput" name="" id="">
                         <option value="0">Đã phê duyệt</option>
                         <option value="1">Chờ phê duyệt</option>
+                        <option value="2">Từ chối</option>
                     </select>
                 </div>
                 <button className="homebtn" onClick={handleSearch}>
@@ -57,9 +73,11 @@ const Approve = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <RowApprove item="1"/>
-                        <RowApprove  item="2"/>
-                        <RowApprove  item="3"/>
+                        {data.map((item, index)=> (
+                            <RowApprove key={item._id} item={item} index={index} 
+                            onRespond={(action) => fetchRespond(item._id, action)}
+                            />
+                        ))}
                     </tbody>
                 </table>
             </div>

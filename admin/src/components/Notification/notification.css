@@ -4,7 +4,7 @@
     padding: 10px 0px;
     overflow: hidden;
     overflow-y: auto;
-    transform: translateX(-52px);
+    transform: translateX(-70px);
     border-radius: 8px;
     box-shadow: 0 0px 5px #999;
     background-color: var(--white-color);
@@ -14,11 +14,16 @@
     display: flex;
     align-items: center;
     padding: 12px;
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .notification:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.active {
+    background-color: var(--white-color);
 }
 
 .notification__img {

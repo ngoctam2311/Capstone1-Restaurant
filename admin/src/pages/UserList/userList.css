@@ -65,9 +65,9 @@ thead .UserListTableRow:nth-child(1) {
 }
 
 .UserListMenu {
-    margin-top: 4px;
     position: absolute;
     width: 120px;
+    margin-top: 4px;
     color: var(--white-color);
     background-color: #84c884;
 }

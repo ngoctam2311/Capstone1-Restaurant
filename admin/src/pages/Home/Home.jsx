@@ -1,23 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import "./home.css";
+import { PaginationComponent } from "../../components";
 
 const Home = () => {
     const [data, setData] = useState([]);
     const [searchValue, setSearchValue] = useState("");
-    const ref = useRef()
+    const [pageno, setPageno] = useState(1);
+    const ref = useRef();
 
     useEffect(() => {
-        dataSearch();
-    }, []);
+        dataSearch(pageno);
+    }, [pageno]);
 
-    const dataSearch = async (value) => {
+    const dataSearch = async (value, pageno) => {
         await axios
             .get(
-                `http://localhost:3000/api/restaurant/search?search=${value}&page=1&limit=10`
+                `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`
             )
             .then((res) => {
-                setData(res.data)
+                setData(res.data);
                 const result = res.data.data.filter((name) => {
                     const nameFood = name.resname;
                     return (
@@ -26,9 +28,7 @@ const Home = () => {
                         nameFood.toLowerCase().includes(value)
                     );
                 });
-                console.log(result)
-                setData(result)
-            
+                setData(result);
             });
     };
 
@@ -38,9 +38,13 @@ const Home = () => {
     };
 
     const handleChange = (value) => {
-        setSearchValue(value)
-        dataSearch(value)
-    }
+        setSearchValue(value);
+        dataSearch(value);
+    };
+
+    const handleClick = (number) => {
+        setPageno(number);
+    };
 
     return (
         <div className="homeAdmin">
@@ -72,23 +76,29 @@ const Home = () => {
                             <th className="homeCol">Thời gian đóng</th>
                         </tr>
                     </thead>
-                        <tbody>
-                            {
-                            // data && data.length > 0 ? 
-                            data.map((item, index) => (
-                                <tr className="tableRow" key={item._id}>
+                    <tbody>
+                        {data.map((item, index) => (
+                            <tr className="tableRow" key={item._id}>
                                 <th className="homeCol">{index + 1}</th>
                                 <th className="homeCol">{item.resname}</th>
-                                <th className="homeCol">{item.address.street},{" "}
-                                    {item.address.district}, {item.address.city}</th>
+                                <th className="homeCol">
+                                    {item.address.street},{" "}
+                                    {item.address.district}, {item.address.city}
+                                </th>
                                 <th className="homeCol">{item.timeOpen}</th>
                                 <th className="homeCol"> {item.timeClose}</th>
                             </tr>
-                            )) 
-                            // : "loading..."
-                            }
-                        </tbody>
+                        ))}
+                    </tbody>
                 </table>
+                {data && data.length >= 10 ? (
+                    <PaginationComponent
+                        activenum={pageno}
+                        handleClick={handleClick}
+                    />
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );

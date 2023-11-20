@@ -1,13 +1,36 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 import Tippy from "@tippyjs/react";
 import HeadlessTippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
-import { BsBellFill } from "react-icons/bs";
+import { FaRegBell } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import "./header.css";
 import { Notification, WrapperNotification } from "../index";
 
 const Header = () => {
+    // const [data, setData] = useState([]);
+    // const [socket, setSocket] = useState(null);
+
+    useEffect(() => {
+    //     const  socket = io("")
+    //     setSocket(socket);
+
+    //     socket.on("dataUpdate", () => {fetchData()})
+        // fetchData()
+
+    //     return () => {
+    //         socket.disconnect()
+    //     }
+    }, []);
+
+    // const fetchData = async () => {
+    //     await axios.get("").then((res) => setData(res.data.data))
+    // }
+
+    const handleLogout = () => {};
+
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -27,7 +50,7 @@ const Header = () => {
                             render={(attrs) => (
                                 <WrapperNotification>
                                     <div
-                                        className="notification-result"
+                                        id="headlessTippy"
                                         tabIndex="-1"
                                         {...attrs}
                                     >
@@ -36,22 +59,19 @@ const Header = () => {
                                         <Notification />
                                         <Notification />
                                         <Notification />
-                                        <Notification />
-                                        <Notification />
                                     </div>
                                 </WrapperNotification>
                             )}
-                            
                         >
                             <div className="topbarIcons">
-                                <BsBellFill className="bell" />
+                                <FaRegBell className="bell" />
                                 <span className="topIconBell">5</span>
                             </div>
                         </HeadlessTippy>
                     </div>
                     <div>
                         <Tippy content="Đăng xuất" delay={150}>
-                            <div className="topbarIcons">
+                            <div className="topbarIcons" onClick={handleLogout}>
                                 <TbLogout className="logout" />
                             </div>
                         </Tippy>

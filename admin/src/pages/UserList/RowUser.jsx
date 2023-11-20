@@ -23,6 +23,7 @@ const RowUser = ({ item, index, fetchData, setData }) => {
         // await axios.delete(`http://localhost:3000/api/user/${id}`)
         // setData(pre => pre.filter(user => user.id !== id))
         // fetchData()
+        alert("Xóa tài khoản người dùng thành công")
     };
 
     return (

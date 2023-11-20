@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./restaurantList.css";
 import { PaginationComponent } from "../../components";
 
@@ -7,21 +7,18 @@ const RestaurantList = () => {
     const [data, setData] = useState([]);
     const [pageno, setPageno] = useState(1);
     const [searchValue, setSearchValue] = useState("");
-    const ref = useRef()
+    const paginationno = 42;
 
     useEffect(() => {
         fetchData(pageno);
-        // dataSearch();
-    }, [pageno]);
+        dataSearch(searchValue, pageno);
+    }, [pageno,searchValue]);
 
     const fetchData = async (pageno) => {
         await axios
-            .get(
-                `http://localhost:3000/api/restaurant?page=${pageno}&limit=10&fields=resname,address,timeOpen,timeClose,seats,typeOfRes,image`
-            )
+            .get(`http://localhost:3000/api/restaurant?page=${pageno}&limit=10`)
             .then((res) => {
-                console.log(res.data.data)
-                // setData(res.data.data);
+                setData(res.data.data.result);
             });
     };
 
@@ -30,37 +27,23 @@ const RestaurantList = () => {
         await axios.delete(`http://localhost:3000/api/restaurant/${resId}`);
         setData((prevData) => prevData.filter((res) => res.id !== resId));
         fetchData();
+        alert("Xóa nhà hàng thành công");
     };
 
-    // const dataSearch = async (value) => {
-    //     await axios
-    //         .get(
-    //             `http://localhost:3000/api/restaurant/search?search=${value}&page=1&limit=10`
-    //         )
-    //         .then((res) => {
-    //             const result = res.data.data.filter((name) => {
-    //                 const nameFood = name.resname;
-    //                 return (
-    //                     nameFood &&
-    //                     value &&
-    //                     nameFood.toLowerCase().includes(value)
-    //                 );
-    //             });
-    //             console.log(result)
-    //             // setSearchValue(result)
-    //             setData(result)
-    //         });
-    // };
+    const dataSearch = async (value, pageno) => {
+        await axios
+            .get(
+                `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`
+            )
+            .then((res) => {
+                setData(res.data.data);
+            });
+    };
 
     const handleSearch = (e) => {
         e.preventDefault();
-        // dataSearch();
+        dataSearch(searchValue);
     };
-
-    // const handleChange = (value) => {
-    //     setSearchValue(value)
-    //     dataSearch(value)
-    // }
 
     const handleClick = (number) => {
         setPageno(number);
@@ -76,9 +59,8 @@ const RestaurantList = () => {
                         className="homeGroupInput"
                         type="text "
                         placeholder="Nhập tên cần tìm"
-                        ref={ref}
                         value={searchValue}
-                        // onChange={(e) => handleChange(e.target.value)}
+                        onChange={(e) => setSearchValue(e.target.value)}
                     />
                 </div>
                 <button className="homebtn" onClick={handleSearch}>
@@ -102,58 +84,66 @@ const RestaurantList = () => {
                             </th>
                             <th className="restaurantListCol">Điểm đánh giá</th>
                             <th className="restaurantListCol">
-                                Tên chủ nhà hàng
+                                Loại hình nhà hàng
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, index) => (
-                            <tr
-                                className="restaurantListTableRow "
-                                key={item._id}
-                                item-data={item._id}
-                            >
-                                <th className="restaurantListCol">
-                                    {index + 1}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.resname}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.address.street},{" "}
-                                    {item.address.district}, {item.address.city}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.timeOpen}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.timeClose}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.seats}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.averagePrice}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.pointEvaluation}
-                                </th>
-                                <th className="restaurantListCol">
-                                    {item.typeOfRes}
-                                </th>
-                                <th
-                                    className="restaurantListCol"
-                                    onClick={() => handleDelete(item._id)}
+                        {data
+                            .filter((item) => {
+                                return item.resname
+                                    .toLowerCase()
+                                    .includes(searchValue.toLowerCase());
+                            })
+                            .map((item, index) => (
+                                <tr
+                                    className="restaurantListTableRow "
+                                    key={item._id}
+                                    item-data={item._id}
                                 >
-                                    <button className="restaurantListCol-btn">
-                                        Xóa
-                                    </button>
-                                </th>
-                            </tr>
-                        ))}
+                                    <th className="restaurantListCol">
+                                        {index + 1}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.resname}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.address.street},{" "}
+                                        {item.address.district},{" "}
+                                        {item.address.city}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.timeOpen}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.timeClose}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.seats}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.averagePrice}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.pointEvaluation}
+                                    </th>
+                                    <th className="restaurantListCol">
+                                        {item.typeOfRes}
+                                    </th>
+                                    <th
+                                        className="restaurantListCol"
+                                        onClick={() => handleDelete(item._id)}
+                                    >
+                                        <button className="restaurantListCol-btn">
+                                            Xóa
+                                        </button>
+                                    </th>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
                 <PaginationComponent
+                    maxnum={paginationno}
                     activenum={pageno}
                     handleClick={handleClick}
                 />

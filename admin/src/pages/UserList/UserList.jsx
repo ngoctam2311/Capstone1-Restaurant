@@ -2,22 +2,31 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./userList.css";
 import RowUser from "./RowUser";
+import { PaginationComponent } from "../../components";
 
 const UserList = () => {
     const [data, setData] = useState([]);
+    const [pageno, setPageno] = useState(1);
+    const paginationno = 51;
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        fetchData(pageno);
+    }, [pageno]);
 
     const fetchData = async () => {
         await axios
-            .get("http://localhost:3000/api/user/")
+            .get(`http://localhost:3000/api/user?page=${pageno}&limit=10`)
             .then((res) => setData(res.data.data));
+
+            
     };
 
     const handleSearch = (e) => {
         e.preventDefault();
+    };
+
+    const handleClick = (number) => {
+        setPageno(number);
     };
 
     return (
@@ -61,6 +70,11 @@ const UserList = () => {
                         ))}
                     </tbody>
                 </table>
+                <PaginationComponent
+                maxnum={paginationno}
+                    activenum={pageno}
+                    handleClick={handleClick}
+                />
             </div>
         </div>
     );

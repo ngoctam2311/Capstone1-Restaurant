@@ -60,6 +60,7 @@ thead .tableRow:nth-child(1) {
 
 .homeCol {
     padding: 6px;
+    height: 64px;
 }
 
 .homeCol:nth-child(1) {

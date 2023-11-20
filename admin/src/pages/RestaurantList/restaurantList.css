@@ -15,6 +15,7 @@ thead .restaurantListTableRow:nth-child(1) {
 
 .restaurantListCol {
     padding: 10px;
+    height: 64px;
 }
 
 .restaurantListCol:nth-child(1) {
@@ -56,7 +57,7 @@ thead .restaurantListTableRow:nth-child(1) {
 }
 
 .restaurantListCol:nth-child(9) {
-    width: 160px;
+    width: 110px;
 }
 
 .restaurantListCol:nth-child(10) {

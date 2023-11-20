@@ -5,7 +5,7 @@ import { AiOutlineRight } from "react-icons/ai";
 import "./paginationComponent.css";
 
 const PaginationComponent = (props) => {
-    const { activenum, handleClick } = props;
+    const {maxnum, activenum, handleClick } = props;
     const forcePageActive = parseInt(activenum) - 1;
     const handlePageClick = (e) => {
         // console.log('hello', e.selected)
@@ -20,7 +20,7 @@ const PaginationComponent = (props) => {
                 previousLabel={<AiOutlineLeft />}
                 nextLabel={<AiOutlineRight />}
                 breakLabel={"..."}
-                pageCount={30}
+                pageCount={maxnum}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={2}
                 onPageChange={handlePageClick}
