@@ -3,11 +3,11 @@ import "./desrestaurant.css"
 import JoditEditor from 'jodit-react';
 import HTMLReactParser from 'html-react-parser'
 
-export default function Desrestaurant() {
+export default function Desrestaurant({handleValue}) {
   const editor = useRef(null)
-  const [content,setContent] = useState('')
+  const [content,setContent] = useState("")
  
-  console.log(HTMLReactParser(content))
+  handleValue({description:HTMLReactParser(content)})
   return (
     <div className="des-restaurant">
           <span className='title-des'> MÔ TẢ NHÀ HÀNG</span>
@@ -15,8 +15,11 @@ export default function Desrestaurant() {
              <JoditEditor 
              ref={editor} 
              value={content} 
-             onChange={(newContent) => setContent(newContent)}/>
+             onChange={ (newContent)=> setContent(newContent)}
+             
+            />
            </div>
+           
     </div>
   )
 }

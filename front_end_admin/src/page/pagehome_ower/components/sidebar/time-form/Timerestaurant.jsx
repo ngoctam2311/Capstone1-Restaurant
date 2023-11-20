@@ -2,16 +2,15 @@ import { useState , useEffect  } from "react"
 import "./timerestaurant.css"
 import axios from "axios"
 
-export default function Timerestaurant() {
+export default function Timerestaurant({handleValue}) {
   const [resSeats,setresSeats] = useState([])
   const [time,setTime] = useState(
     {
-      timeOpen:"",
-      timeClose:"",
+      timeopen:"",
+      timeclose:"",
       seat:""
-      
    })
-   
+   handleValue(time)
     // get api
     useEffect(()=>{
       axios.get('http://localhost:5556/api/restaurant/')
@@ -22,12 +21,11 @@ export default function Timerestaurant() {
 
     const handleInput = (e)=>{
  
-      setTime(() =>{
-        const data = {...time}
-        data[e.target.name] = e.target.value;
-        console.log(data)
-      })
+      const newdata = {...time}
+      newdata[e.target.name] = e.target.value
+      setTime(newdata)
      }
+   
   return (
     <div className='times-restaurant'>
         <span className="title-time">THỜI GIAN HOẠT ĐỘNG</span>
@@ -36,15 +34,15 @@ export default function Timerestaurant() {
                 <span className="time-name">Thời gian & số lượng</span>
                 <div className="rowflex-grow-1">
                       <div className="col-md-6-1">
-                      <input type="time" class="nice-inputw-100"  name="timeOpen" onChange={handleInput} />
+                      <input type="time" class="nice-inputw-100"  name="timeopen" onChange={ (e)=> handleInput(e)} value={time.timeopen}/>
                       </div>
                       <div className="col-md-6-2">
-                       <input type="time" class="nice-inputw-100 "  name="timeClose" onChange={handleInput}/>
+                       <input type="time" class="nice-inputw-100 "  name="timeclose" onChange={ (e)=> handleInput(e)} value={time.timeclose}/>
                       </div>  
                 </div>
                 <div className="rowflex-grow-2">
                       <div className="col-md-6-3">
-                      <select className="nice-inputw-100" name="seat" onChange={handleInput}>
+                      <select className="nice-inputw-100" name="seat" onChange={ (e)=> handleInput(e)} value={time.seat}>
                         <option value={''}>Chọn số bàn</option>
                            {
                              resSeats.map((seat)=>(

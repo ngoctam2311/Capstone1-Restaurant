@@ -5,9 +5,21 @@ import Desrestaurant from '../../components/sidebar/option-form/Desrestaurant'
 import Image from '../../components/sidebar/image-form/Image'
 import Timerestaurant from '../../components/sidebar/time-form/Timerestaurant'
 import Addfoot from '../../components/sidebar/addfoot-form/Addfoot'
+import axios from "axios"
+import { useState } from "react"
 
 export default function Createprofile() {
-
+ 
+ const [create,setCreate] = useState('')
+  const handleValue = (e) =>{
+     
+     console.log(e)
+  }
+  
+  const  handleSubmit = (e) =>{
+    e.preventDefault()
+    
+  }
   return (
      <div className="wrapper">
          <div className="header">
@@ -15,13 +27,14 @@ export default function Createprofile() {
               <h2 className="infomation-text">TẠO HỒ SƠ NHÀ HÀNG</h2>
             </div>
          </div>
+         <form onSubmit={handleSubmit}>
          <div className="maincontent">
             <div className="listcontent">
-            <div className="information-restaurant">
-                    <Inforestaurant />
+             <div className="information-restaurant">
+                    <Inforestaurant handleValue={handleValue}/>
               </div>
               <div className="description-restaurant">
-                     <Desrestaurant/>
+                     <Desrestaurant handleValue={handleValue}/>
               </div>
               <div className="img-restaurant">
                      <Image/>
@@ -29,10 +42,10 @@ export default function Createprofile() {
             </div>
             <div className="listcontent-row2">
             <div className="time-restaurant">
-                <Timerestaurant/>
+                <Timerestaurant handleValue={handleValue}/>
                </div>
                <div className="addfoot-restaurant">
-                 <Addfoot/>
+                 <Addfoot  handleValue={handleValue}/>
               </div>
               <div className="footer-button">
              <div className="button">
@@ -42,6 +55,7 @@ export default function Createprofile() {
              </div>
             </div>
          </div>
+        </form>
     </div>
   )
 }

@@ -11,7 +11,6 @@ import Reservations from "./page/pagehome_ower/containers/my-owner-restaurant/my
 export default function App()  {
        return (
         
-           
             <div className="Main">
                <Topbar/>
                <div className="slide"></div>

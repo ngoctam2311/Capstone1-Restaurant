@@ -4,19 +4,16 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 
 
-export default function Addfoot() {
-
-   
+export default function Addfoot({handleValue}) {
    const [addfoot, setaddfoot] = useState({
     typeOfRes:"",
     averagePrice:""
    })
-    
-    function handle(e){
+   handleValue(addfoot)
+   const handle = (e)=>{
         const newdata = {...addfoot}
         newdata[e.target.id] = e.target.value
         setaddfoot(newdata)
-        console.log(newdata)
     }
 
    
@@ -56,8 +53,7 @@ export default function Addfoot() {
             <span className="title-foot">Ảnh món ăn</span>
             <div className="form-foot-img" onClick={handleImageClick}>
             <label type='file' className='file-upimg'>
-            
-            {image ? image.name : <InsertPhotoIcon/>}
+             {image ? image.name : <InsertPhotoIcon/>}
              <input type="file" className='file-img-add' ref={inputRef}  onChange={handleImageChange}/>
              </label>
             </div>
