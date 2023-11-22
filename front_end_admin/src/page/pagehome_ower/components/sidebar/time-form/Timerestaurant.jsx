@@ -2,7 +2,7 @@ import { useState , useEffect  } from "react"
 import "./timerestaurant.css"
 import axios from "axios"
 
-export default function Timerestaurant({handleValue}) {
+export default function Timerestaurant() {
   const [resSeats,setresSeats] = useState([])
   const [time,setTime] = useState(
     {
@@ -10,7 +10,7 @@ export default function Timerestaurant({handleValue}) {
       timeclose:"",
       seat:""
    })
-   handleValue(time)
+   
     // get api
     useEffect(()=>{
       axios.get('http://localhost:5556/api/restaurant/')

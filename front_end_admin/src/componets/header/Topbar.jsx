@@ -17,7 +17,7 @@ export default function Topbar() {
                  <span className="topIconBell">5</span>
              </div>
              <div className="topbarIcons">
-                 <LogoutIcon className='logout'/>
+                 <LogoutIcon className='logout' />
              </div>
            </div>
         </div>

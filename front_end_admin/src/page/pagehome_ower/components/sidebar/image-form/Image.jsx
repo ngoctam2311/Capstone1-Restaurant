@@ -7,6 +7,7 @@ export default function Image() {
   const inputRef = useRef(null)
   const [image,setImage] = useState("")
 
+
   const handleImageClick = ()=>{
     inputRef.current.click();
   }

@@ -9,15 +9,13 @@ import axios from "axios"
 import { useState } from "react"
 
 export default function Createprofile() {
- 
+ const [value,setValue] = useState('')
  const [create,setCreate] = useState('')
-  const handleValue = (e) =>{
-     
-     console.log(e)
-  }
+ 
   
   const  handleSubmit = (e) =>{
     e.preventDefault()
+    console.log(value)
     
   }
   return (
@@ -31,21 +29,21 @@ export default function Createprofile() {
          <div className="maincontent">
             <div className="listcontent">
              <div className="information-restaurant">
-                    <Inforestaurant handleValue={handleValue}/>
+                    <Inforestaurant />
               </div>
               <div className="description-restaurant">
-                     <Desrestaurant handleValue={handleValue}/>
+                     <Desrestaurant />
               </div>
               <div className="img-restaurant">
-                     <Image/>
+                     <Image />
               </div>
             </div>
             <div className="listcontent-row2">
             <div className="time-restaurant">
-                <Timerestaurant handleValue={handleValue}/>
+                 <Timerestaurant />
                </div>
                <div className="addfoot-restaurant">
-                 <Addfoot  handleValue={handleValue}/>
+                 <Addfoot  />
               </div>
               <div className="footer-button">
              <div className="button">

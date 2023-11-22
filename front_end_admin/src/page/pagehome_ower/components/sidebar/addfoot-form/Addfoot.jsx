@@ -4,12 +4,12 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 
 
-export default function Addfoot({handleValue}) {
+export default function Addfoot() {
    const [addfoot, setaddfoot] = useState({
     typeOfRes:"",
     averagePrice:""
    })
-   handleValue(addfoot)
+  
    const handle = (e)=>{
         const newdata = {...addfoot}
         newdata[e.target.id] = e.target.value

@@ -2,7 +2,7 @@ import React, { useEffect, useState ,useRef} from 'react'
 import "./inforestaurant.css"
 import axios from 'axios'
 
-export default function Inforestaurant({handleValue}) {
+export default function Inforestaurant() {
   const [infores,setInfores] = useState({
       resname:"",
       street: "",
@@ -10,7 +10,7 @@ export default function Inforestaurant({handleValue}) {
       city: ""
     },
   )
-  handleValue(infores)
+  
   const [resAddress,setresAddress] = useState([])
   
   // get api

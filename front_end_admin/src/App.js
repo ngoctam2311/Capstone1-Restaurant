@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Createprofile from "./page/pagehome_ower/containers/CreateProfile/Createprofile";
 import ProfileRestaurant from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/ProfileRestaurant";
 import Reservations from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/mylist/Reservations";
+import FormLogIn from "./page/pagehome_ower/page/FormAccount/FormLogin";
 
 export default function App()  {
        return (
@@ -21,6 +22,7 @@ export default function App()  {
                     <Route path="/create" element={<Createprofile/>} />
                     <Route path="/profile" element={<ProfileRestaurant/>} />
                     <Route path="/list" element={<Reservations/>} />
+                    <Route path="/login" element={<FormLogIn/>}/>
                     
                </Routes>
              </div>
