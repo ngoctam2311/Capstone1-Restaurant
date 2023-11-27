@@ -2,12 +2,13 @@ import React, { useEffect, useState ,useRef} from 'react'
 import "./inforestaurant.css"
 import axios from 'axios'
 
-export default function Inforestaurant() {
+export default function Inforestaurant(props) {
   const [infores,setInfores] = useState({
       resname:"",
       street: "",
-      district : "",
-      city: ""
+      city: "",
+      district : ""
+
     },
   )
   
@@ -36,15 +37,14 @@ export default function Inforestaurant() {
   // input post
   const handleInput = (e) =>{
     setInfores({...infores,[e.target.name]: e.target.value})
-    
+    props.childata(infores)
   }
-
   // child to parent
   
    
   return (
     <div className='info-restaurant'>
-        <span className='title-name'>THÔNG TIN NHA HÀNG</span>
+        <span className='title-name-info'>THÔNG TIN NHA HÀNG</span>
          <form className="infoForm">
            <div className="infoItem" >
              <label >Tên Nhà Hàng</label>
@@ -56,7 +56,7 @@ export default function Inforestaurant() {
            </div>
 
            <div className="infoItem">
-            <label >Tỉnh/Thành Phố</label >
+            <label >Tỉnh/Thành Phố</label>
               <select className='text-input' name='city' onChange={ (e)=> handleInput(e)} value={infores.city}  > 
                  <option value={''}>Chọn thành phố</option>
                   {
@@ -73,7 +73,7 @@ export default function Inforestaurant() {
                <option value={''}>Chọn Quận huyện</option>
                   {
                     resAddress.map((datacity)=>(
-                      <option value={datacity.address.district} key={datacity._id}>{datacity.address.district}</option>
+                      <option value={datacity.address.district}>{datacity.address.district}</option>
                       
                     ))
                   }

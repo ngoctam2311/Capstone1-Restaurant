@@ -1,5 +1,5 @@
 .image-restaurant{
-    width: 700px;
+    width: 90%;
     border-radius: 10px;
     border: 1px solid #CDCDCD;
     margin-left: 10px;
@@ -8,13 +8,12 @@
 }
 .title-img{
     margin-left: 20px;
-    margin-top: 5px;
-    color: #00665C;
+   padding-top: 10px;
+   color: #00665C;
    font-family: Inter;
-   font-size: 20px;
+   font-size: 15px;
    font-style: normal;
    font-weight: 700;
-   line-height: normal;
 }
 .push-image{
    margin-top: 10px;

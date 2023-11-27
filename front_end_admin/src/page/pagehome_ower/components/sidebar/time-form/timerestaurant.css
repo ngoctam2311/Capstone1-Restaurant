@@ -1,12 +1,12 @@
 .times-restaurant{
-   width: 550px;
+   width: 90%;
    border-radius: 10px;
    border: 1px solid #CDCDCD;
    margin-left: 10px;
    height:200px
 }
 .setuptime{
-   width: 500px;
+   width: 90%;
    border-radius: 10px;
    border: 1px solid #CDCDCD;
    margin-left: 20px;
@@ -25,13 +25,12 @@ line-height: normal;
 }
 .title-time{
    margin-left: 20px;
-   margin-top: 5px;
+   padding-top: 10px;
    color: #00665C;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+   font-family: Inter;
+   font-size: 15px;
+   font-style: normal;
+   font-weight: 700;
 
 }
 

@@ -8,8 +8,10 @@ export default function Topbar() {
     <div className='topbar'>
         <div className='topbarWrapper'>
            <div className='topLeft'>
+           <div className='logo-restaurant'>
              <span className="text-wrapper1">Rest</span>
              <span className="text-wrapper2">aurant</span>
+           </div>
            </div>
            <div className='topRight'>
              <div className="topbarIcons">
@@ -21,6 +23,7 @@ export default function Topbar() {
              </div>
            </div>
         </div>
+        <div className="slide"></div>
     </div>
   )
 }

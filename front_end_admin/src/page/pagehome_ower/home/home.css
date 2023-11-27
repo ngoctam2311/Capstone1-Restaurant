@@ -1,13 +1,17 @@
 .home{
     flex: 4;
+    height: 600px;
 }
-.title{
-    margin: 20px 40px;
+.title-home{
+    height: 30px;
+    width: 200px;    
     background-color: #00665C;
-    width: 300px;
-    text-align: center;
-    border-radius: 20px;
-    height: 50px;
-    padding-top: 5px;
+    font-size: 10px;
     color: #fff;
+    border-radius: 8px;
+    margin: 10px 20px;
+    text-align: center;
+}
+.titlename{
+    padding-top: 5px;
 }

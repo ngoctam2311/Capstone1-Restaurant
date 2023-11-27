@@ -1,42 +1,42 @@
 .sidebar{
-    width: 300px;
+    width:20%;
     background-color: #00665c;
-    height: 900px;
-    position: relative;
+    /* position: relative; */
+    
 }
 .sidebarlist{
-    position: absolute;
+    /* position: absolute; */
     /* padding: 0 30px; */
 }
 .sidebar .img{
-    height: 107px;
-    left: 68px;
+    height: 90px;
+    margin-left:25%;
     object-fit: cover;
-    position: absolute;
-    width: 114px;
-    top:10px;
+    /* position: absolute; */
+    margin-top: 10px;
 }
 .name-owner{
-    margin-left: 35px;
-    font-size: 30px;
+    margin-left: 20%;
+    font-size: 25px;
     font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #fff;
 }
 
 .function-name{
-    font-size: 26px;
+    margin-left: 10%;
+    font-size: 18px;
     color: #fff;
     font-family: "Inter", Helvetica;
     font-weight: 700;
 }
 .sideMenu{
-   position: absolute;
-   padding: 10px 20px;
-   margin-top: 120px;
+   /* position: absolute; */
+   padding: 10px 15px;
+   
 }
 .sidebarList-item{
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
     padding: 5px;
@@ -72,7 +72,7 @@
     transition: transform .3s;
 }
 .suvnav{
-    padding-top: 25px;
+    padding-top: 5px;
     height: 0;
     overflow: hidden;
 
@@ -99,7 +99,7 @@
   background-color: #2F88FF;
 }
 .option-text{
-    padding: 0 30px;
+    padding: 0 15px;
     font-family: "Inter", Helvetica;
     font-weight: 700;
 }

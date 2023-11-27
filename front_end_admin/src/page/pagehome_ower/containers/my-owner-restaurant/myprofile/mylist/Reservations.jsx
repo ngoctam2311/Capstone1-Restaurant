@@ -6,7 +6,7 @@ export default function Reservations() {
   return (
     <div className='wrapper'>
        <div className="header">
-            <div className="title">
+            <div className="title-list">
               <h2 className="list-text">DANH SÁCH ĐẶT CHỖ</h2>
             </div>
        </div>

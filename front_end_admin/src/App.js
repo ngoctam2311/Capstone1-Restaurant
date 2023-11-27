@@ -14,7 +14,6 @@ export default function App()  {
         
             <div className="Main">
                <Topbar/>
-               <div className="slide"></div>
                 <div className="container">
                 <Sidebar/>
                  <Routes>

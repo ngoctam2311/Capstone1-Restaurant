@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Sidebar() {
   return (
     <div className='sidebar'>
-      <img className="img" alt="Ellipse" src="https://c.animaapp.com/vhs2vhQQ/img/ellipse-5@2x.png" />
+      <img className="img" alt="Ellipse" src="https://c.animaapp.com/vhs2vhQQ/img/ellipse-5@2x.png"/>
       <div className='sideMenu'> 
         <span className='name-owner'>Tâm Đinh</span>
           <p className='function-name'>Chức Năng Chính</p>
@@ -22,11 +22,7 @@ export default function Sidebar() {
                 <div className="sidebarList-item">
                     <Sidebaroption/>
                 </div>
-                <div className="sidebarList-item">
-                    <EditNoteIcon className='sidebarIcon'/>
-                    
-                    <p className='name-menu'>Tạo bài viết</p>
-                </div>
+                
                 <div className='img-restaurant'>
                     <img className='imgrestaurant' src='https://c.animaapp.com/0EOLjur4/img/rectangle-262.svg'></img>
                </div>

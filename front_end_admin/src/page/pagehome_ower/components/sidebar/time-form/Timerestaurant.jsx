@@ -2,7 +2,7 @@ import { useState , useEffect  } from "react"
 import "./timerestaurant.css"
 import axios from "axios"
 
-export default function Timerestaurant() {
+export default function Timerestaurant(props) {
   const [resSeats,setresSeats] = useState([])
   const [time,setTime] = useState(
     {
@@ -10,6 +10,7 @@ export default function Timerestaurant() {
       timeclose:"",
       seat:""
    })
+   
    
     // get api
     useEffect(()=>{
@@ -20,10 +21,10 @@ export default function Timerestaurant() {
 
 
     const handleInput = (e)=>{
- 
       const newdata = {...time}
       newdata[e.target.name] = e.target.value
       setTime(newdata)
+      props.childata(time)
      }
    
   return (
@@ -55,14 +56,14 @@ export default function Timerestaurant() {
                        <input type="text" class="nice-inputw-100 " formControlName="endTime" />
                       </div> */}
                 </div>
-                <div className='button-time'>
+                {/* <div className='button-time'>
                 <button className='nice-inputw-150'>
                   <span className="time">Thêm thời gian & SL</span>
                 </button>
                   <button className='nice-inputw-160'>
                   <span className='delete'>Xóa</span>
                   </button>
-            </div>
+            </div> */}
             </div>
             
         </div>

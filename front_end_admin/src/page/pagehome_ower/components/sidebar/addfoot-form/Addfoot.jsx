@@ -33,7 +33,7 @@ export default function Addfoot() {
     
   return (
     <div className="add-foot-restaurant">
-        <span className="title-name">THÊM MÓN ĂN</span>
+        <span className="title-name-addfoot">THÊM MÓN ĂN</span>
         <div className="all-add-foot">
         <form >
         <div className="add-foot">

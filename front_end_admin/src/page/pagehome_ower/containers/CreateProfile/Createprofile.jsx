@@ -9,30 +9,25 @@ import axios from "axios"
 import { useState } from "react"
 
 export default function Createprofile() {
- const [value,setValue] = useState('')
- const [create,setCreate] = useState('')
- 
   
-  const  handleSubmit = (e) =>{
-    e.preventDefault()
-    console.log(value)
-    
+  const getdata = (data) =>{
+         console.log(data)
   }
+
   return (
      <div className="wrapper">
          <div className="header">
-            <div className="title">
+            <div className="title-create">
               <h2 className="infomation-text">TẠO HỒ SƠ NHÀ HÀNG</h2>
             </div>
          </div>
-         <form onSubmit={handleSubmit}>
          <div className="maincontent">
             <div className="listcontent">
              <div className="information-restaurant">
-                    <Inforestaurant />
+                    <Inforestaurant childata={getdata}/>
               </div>
               <div className="description-restaurant">
-                     <Desrestaurant />
+                     <Desrestaurant childata={getdata}/>
               </div>
               <div className="img-restaurant">
                      <Image />
@@ -40,7 +35,7 @@ export default function Createprofile() {
             </div>
             <div className="listcontent-row2">
             <div className="time-restaurant">
-                 <Timerestaurant />
+                 <Timerestaurant childata={getdata}/>
                </div>
                <div className="addfoot-restaurant">
                  <Addfoot  />
@@ -53,7 +48,6 @@ export default function Createprofile() {
              </div>
             </div>
          </div>
-        </form>
     </div>
   )
 }
