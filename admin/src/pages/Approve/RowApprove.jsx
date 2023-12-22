@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaEllipsisVertical } from "react-icons/fa6";
 import { AiOutlineCheck } from "react-icons/ai";
-import { AiOutlineDelete } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { IoCloseOutline } from "react-icons/io5";
 import "./approve.css";
-import axios from "axios";
 
 const RowApprove = ({ index, item, onRespond }) => {
     const stat = item.status;
-    const id = item._id
     const [menu, setMenu] = useState(false);
     const [status, setStatus] = useState(stat);
+    
 
     const handleStatus = (newStatus) => {
         if (newStatus ===  "accept" || newStatus === "reject") {
-            onRespond(id, newStatus);
+            onRespond(newStatus);
         }
 
         setStatus(newStatus);
@@ -25,11 +24,6 @@ const RowApprove = ({ index, item, onRespond }) => {
     const handleIcon = () => {
         setMenu(!menu);
     };
-
-    const handleDelete = (id) => {
-        console.log("xóa id: ",id)
-        setMenu(false)
-    }
 
     return (
         <tr className="approveTableRow">
@@ -58,27 +52,23 @@ const RowApprove = ({ index, item, onRespond }) => {
                         <ul className="approve">
                             <li
                                 className="approveItem"
-                                onClick={() => handleStatus("accepted")}
+                                onClick={() => handleStatus("accept")}
                             >
-                                <AiOutlineCheck className="approveItemIcon" /> accepted
+                                <AiOutlineCheck className="approveItemIcon" /> Accepted
                             </li>
                             <li
                                 className="approveItem"
                                 onClick={() => handleStatus(stat)}
                             >
                                 <BiDotsHorizontalRounded className="approveItemIcon" />
-                                {stat}
+                                Pending
                             </li>
                             <li
                                 className="approveItem"
-                                onClick={() => handleStatus("rejected")}
+                                onClick={() => handleStatus("reject")}
                             >
-                                <BiDotsHorizontalRounded className="approveItemIcon" />
-                                rejected
-                            </li>
-                            <li className="approveItem" onClick={() => handleDelete(id)}>
-                                <AiOutlineDelete className="approveItemIcon" />
-                                Delete
+                                <IoCloseOutline className="approveItemIcon" />
+                                Rejected
                             </li>
                         </ul>
                     </div>

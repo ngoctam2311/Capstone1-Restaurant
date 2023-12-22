@@ -1,39 +1,56 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./approve.css";
 import RowApprove from "./RowApprove";
 
-
 const Approve = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
+        try {
         await axios
-            .get(`http://localhost:3000/api/restaurant/pending`)
+            .get(`http://localhost:3000/api/pending`)
             .then((res) => {
-                setData(res.data.data)
-                // console.log(res.data.data)
+                setData(res.data.data);
             });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
     const fetchRespond = async (restaurantId, action) => {
-        await axios.patch(`http://localhost:3000/api/restaurant/respond`, {
-            restaurantId,
-            action
-        })
-        .then((res) => {
+        await axios
+            .patch(`http://localhost:3000/api/restaurant/respond`, {
+                restaurantId,
+                action,
+            })
+            .then((res) => {
+                setData(res.data.data);
+            });
             fetchData();
-            setData(res.data.data)
-            // console.log(res.data.data)
-        }) 
-    }
+    };
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
+        
+        // Get the selected status from the dropdown
+        const status = document.getElementById("statusDropdown").value;
+
+        try {
+            const response = await axios.get(
+                `http://localhost:3000/api/restaurant?status=${status}`
+            );
+    
+            setData(response.data.data.result);
+            fetchData();
+        } catch (error) {
+            console.error("Error searching data:", error);
+        }
     };
 
     return (
@@ -50,10 +67,11 @@ const Approve = () => {
                 </div>
                 <div className="homeAdminGroup">
                     <label className="homeGroupHeading">Trạng thái</label>
-                    <select className="homeGroupInput" name="" id="">
-                        <option value="0">Đã phê duyệt</option>
-                        <option value="1">Chờ phê duyệt</option>
-                        <option value="2">Từ chối</option>
+                    <select className="homeGroupInput" name="" id="statusDropdown"
+                    >
+                        <option value="accepted">accepted</option>
+                        <option value="pending">pending</option>
+                        <option value="rejected">rejected</option>
                     </select>
                 </div>
                 <button className="homebtn" onClick={handleSearch}>
@@ -61,7 +79,8 @@ const Approve = () => {
                 </button>
             </form>
             <div className="approveTable">
-                <table>
+                
+                    <table>
                     <thead>
                         <tr className="approveTableRow">
                             <th className="approveCol">STT</th>
@@ -73,11 +92,20 @@ const Approve = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, index)=> (
-                            <RowApprove key={item._id} item={item} index={index} 
-                            onRespond={(action) => fetchRespond(item._id, action)}
-                            />
-                        ))}
+                        {loading ? (
+                            <p>đang tải dữ liệu...</p>
+                        ) : (
+                            data && data.map((item, index) => (
+                                <RowApprove
+                                    key={item._id}
+                                    item={item}
+                                    index={index}
+                                    onRespond={(action) =>
+                                        fetchRespond(item._id, action)
+                                    }
+                                />
+                            ))
+                        )}
                     </tbody>
                 </table>
             </div>

@@ -17,10 +17,8 @@ const UserList = () => {
         await axios
             .get(`http://localhost:3000/api/user?page=${pageno}&limit=10`)
             .then((res) => setData(res.data.data));
-
-            
     };
-
+    
     const handleSearch = (e) => {
         e.preventDefault();
     };

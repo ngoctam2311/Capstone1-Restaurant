@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import Tippy from "@tippyjs/react";
 import HeadlessTippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
@@ -13,21 +13,33 @@ const Header = () => {
     // const [data, setData] = useState([]);
     // const [socket, setSocket] = useState(null);
 
-    useEffect(() => {
+    // useEffect(() => {
     //     const  socket = io("")
     //     setSocket(socket);
 
     //     socket.on("dataUpdate", () => {fetchData()})
-        // fetchData()
+    // fetchData()
 
     //     return () => {
     //         socket.disconnect()
     //     }
+    // }, []);
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetchData();
     }, []);
 
-    // const fetchData = async () => {
-    //     await axios.get("").then((res) => setData(res.data.data))
-    // }
+    const fetchData = async () => {
+        try {
+            await axios.get("http://localhost:3000/api/pending").then((res) => {
+                setData(res.data.data.result);
+            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     const handleLogout = () => {};
 
@@ -55,17 +67,21 @@ const Header = () => {
                                         {...attrs}
                                     >
                                         <Notification />
-                                        <Notification />
-                                        <Notification />
-                                        <Notification />
-                                        <Notification />
                                     </div>
                                 </WrapperNotification>
                             )}
                         >
                             <div className="topbarIcons">
                                 <FaRegBell className="bell" />
-                                <span className="topIconBell">5</span>
+                                <span
+                                    className={
+                                        data.length === 0
+                                            ? "topIconBellHidden"
+                                            : "topIconBell"
+                                    }
+                                >
+                                    {data.length}
+                                </span>
                             </div>
                         </HeadlessTippy>
                     </div>

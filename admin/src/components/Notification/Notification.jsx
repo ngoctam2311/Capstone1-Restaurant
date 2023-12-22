@@ -1,30 +1,63 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react";
 import "./notification.css";
 import { routes } from "../../Routes/Routes";
-import React,{ useRef, useState } from "react";
 
 const Notification = () => {
     const [activeColor, setActiveColor] = useState(false);
-    const ref = useRef()
+    const [data, setData] = useState([]);
+    const ref = useRef();
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            await axios.get("http://localhost:3000/api/pending").then((res) => {
+                setData(res.data.data.result);
+            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     const handleClick = () => {
         setActiveColor(true);
     };
 
     return (
-        <Link to={routes.approve} ref={ref}>
-            <div className={`notification ${activeColor ? "active" : ""}`} onClick={handleClick}>
-                <img
-                    className="notification__img"
-                    src="https://cf.shopee.vn/file/9a34f98ebcc17429b246173d3fa6c229_tn"
-                    alt=""
-                />
-                <div className="notification__info">
-                    <span className="notification__resname">bún </span>
-                    <span className="notification__dec">cần phê duyệt</span>
-                </div>
-            </div>
-        </Link>
+        <>
+            {data.length === 0 ? (
+                <p className="notRestaurantApprove">không có nhà hàng cần phê duyệt</p>
+            ) : (
+                data.map((item, index) => (
+                    <Link to={routes.approve} ref={ref} key={index}>
+                        <div
+                            className={`notification ${
+                                activeColor ? "active" : ""
+                            }`}
+                            onClick={handleClick}
+                        >
+                            <img
+                                className="notification__img"
+                                src={item.image}
+                                alt=""
+                            />
+                            <div className="notification__info">
+                                <span className="notification__resname">
+                                    {item.resname}
+                                </span>
+                                <span className="notification__dec">
+                                    {item.status}
+                                </span>
+                            </div>
+                        </div>
+                    </Link>
+                ))
+            )}
+        </>
     );
 };
 

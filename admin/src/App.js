@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Fragment } from "react";
-// import { DefaultLayout, Header, SlideBar } from "./components";
-
+import { useSelector } from "react-redux";
 import { DefaultLayout } from "./components/index";
 import { publicRoutes } from "./Routes/Routes";
 
 function App() {
+    const dataRedux = useSelector((state) => state.user.account);
+
     return (
         <Router>
             <Routes>

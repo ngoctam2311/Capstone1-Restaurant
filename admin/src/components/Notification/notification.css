@@ -22,6 +22,12 @@
     background-color: rgba(0, 0, 0, 0.06);
 }
 
+.notRestaurantApprove {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+
 .active {
     background-color: var(--white-color);
 }
