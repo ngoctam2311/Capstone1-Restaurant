@@ -5,8 +5,8 @@ import Home from "./page/pagehome_ower/home/Home";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Createprofile from "./page/pagehome_ower/containers/CreateProfile/Createprofile";
-import ProfileRestaurant from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/ProfileRestaurant";
-import Reservations from "./page/pagehome_ower/containers/my-owner-restaurant/myprofile/mylist/Reservations";
+import ProfileRestaurant from "./page/pagehome_ower/containers/ProfileRestaurant/ProfileRestaurant";
+import Reservations from "./page/pagehome_ower/page/RestaurantList/Reservations";
 import FormLogIn from "./page/pagehome_ower/page/FormAccount/FormLogin";
 
 export default function App()  {

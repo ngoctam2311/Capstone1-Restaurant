@@ -2,32 +2,21 @@ import React, { useState ,useRef} from 'react'
 import "./addfoot.css"
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
-
-
-export default function Addfoot() {
-   const [addfoot, setaddfoot] = useState({
-    typeOfRes:"",
-    averagePrice:""
-   })
+export default function Addfoot({create,Setcreate,handleInputChange}) {
   
-   const handle = (e)=>{
-        const newdata = {...addfoot}
-        newdata[e.target.id] = e.target.value
-        setaddfoot(newdata)
-    }
-
-   
-    
     const inputRef = useRef(null)
-    const [image,setImage] = useState("")
 
     const handleImageClick = ()=>{
     inputRef.current.click();
      }
     const handleImageChange = (event)=>{
     const file = event.target.files[0]
-    console.log(file)
-    setImage(event.target.files[0])
+    if (file) {
+        Setcreate({
+          ...create,
+          resMenuInfor: file
+        });
+      }
     }
      
     
@@ -39,13 +28,13 @@ export default function Addfoot() {
         <div className="add-foot">
             <span className="title-foot">Món ăn</span>
             <div className="form-foot">
-                <input type='text' className='textinput' id='typeOfRes' onChange={(e)=> handle(e)} value={addfoot.typeOfRes}></input>
+                <input type='text' className='textinput' id='typeOfRes' name='typeOfRes' onChange={handleInputChange} value={create.typeOfRes}></input>
             </div>
         </div>
         <div className="add-foot">
             <span className="title-foot">Giá Tiền</span>
             <div className="form-foot">
-                <input type='text' className='textinput' id='averagePrice' onChange={(e)=> handle(e)} value={addfoot.averagePrice}></input>
+                <input type='text' className='textinput' id='averagePrice' name='averagePrice' onChange={handleInputChange} value={create.averagePrice}></input>
             </div>
         </div>
         </form>
@@ -53,7 +42,7 @@ export default function Addfoot() {
             <span className="title-foot">Ảnh món ăn</span>
             <div className="form-foot-img" onClick={handleImageClick}>
             <label type='file' className='file-upimg'>
-             {image ? image.name : <InsertPhotoIcon/>}
+             {create.resMenuInfor ? create.resMenuInfor.name : <InsertPhotoIcon/>}
              <input type="file" className='file-img-add' ref={inputRef}  onChange={handleImageChange}/>
              </label>
             </div>

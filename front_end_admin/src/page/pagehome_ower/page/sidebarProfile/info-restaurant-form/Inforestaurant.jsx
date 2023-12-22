@@ -2,15 +2,7 @@ import React, { useEffect, useState ,useRef} from 'react'
 import "./inforestaurant.css"
 import axios from 'axios'
 
-export default function Inforestaurant(props) {
-  const [infores,setInfores] = useState({
-      resname:"",
-      street: "",
-      city: "",
-      district : ""
-
-    },
-  )
+export default function Inforestaurant() {
   
   const [resAddress,setresAddress] = useState([])
   
@@ -34,12 +26,6 @@ export default function Inforestaurant(props) {
     setImage(event.target.files[0])
   }
 
-  // input post
-  const handleInput = (e) =>{
-    setInfores({...infores,[e.target.name]: e.target.value})
-    props.childata(infores)
-  }
-  // child to parent
   
    
   return (
@@ -48,16 +34,16 @@ export default function Inforestaurant(props) {
          <form className="infoForm">
            <div className="infoItem" >
              <label >Tên Nhà Hàng</label>
-             <input  type="text" className='text-input' name='resname'onChange={ (e)=> handleInput(e)} value={infores.resname}/>
+             <input  type="text" className='text-input' id="resname" name='resname'/>
            </div>
            <div className="infoItem">
              <label >Địa Chỉ(cụ thể)</label>
-             <input  type="text" className='text-input' name='street' onChange={ (e)=> handleInput(e)} value={infores.street}/>
+             <input  type="text" className='text-input' id='street' name='address.street' />
            </div>
 
            <div className="infoItem">
             <label >Tỉnh/Thành Phố</label>
-              <select className='text-input' name='city' onChange={ (e)=> handleInput(e)} value={infores.city}  > 
+              <select className='text-input' name='address.city' id='city'  > 
                  <option value={''}>Chọn thành phố</option>
                   {
                     resAddress.map((datacity)=>(
@@ -69,7 +55,7 @@ export default function Inforestaurant(props) {
            </div>
            <div className="infoItem">
              <label >Quận/huyện</label>
-             <select  className='text-input' name='district' onChange={ (e)=> handleInput(e)} value={infores.district}>
+             <select  className='text-input' name='address.district' id='district' >
                <option value={''}>Chọn Quận huyện</option>
                   {
                     resAddress.map((datacity)=>(

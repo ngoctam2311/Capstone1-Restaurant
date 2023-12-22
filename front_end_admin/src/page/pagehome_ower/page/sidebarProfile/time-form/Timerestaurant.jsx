@@ -2,16 +2,9 @@ import { useState , useEffect  } from "react"
 import "./timerestaurant.css"
 import axios from "axios"
 
-export default function Timerestaurant(props) {
+export default function Timerestaurant() {
   const [resSeats,setresSeats] = useState([])
-  const [time,setTime] = useState(
-    {
-      timeopen:"",
-      timeclose:"",
-      seat:""
-   })
-   
-   
+  
     // get api
     useEffect(()=>{
       axios.get('http://localhost:5556/api/restaurant/')
@@ -20,12 +13,6 @@ export default function Timerestaurant(props) {
     },[])
 
 
-    const handleInput = (e)=>{
-      const newdata = {...time}
-      newdata[e.target.name] = e.target.value
-      setTime(newdata)
-      props.childata(time)
-     }
    
   return (
     <div className='times-restaurant'>
@@ -35,15 +22,15 @@ export default function Timerestaurant(props) {
                 <span className="time-name">Thời gian & số lượng</span>
                 <div className="rowflex-grow-1">
                       <div className="col-md-6-1">
-                      <input type="time" class="nice-inputw-100"  name="timeopen" onChange={ (e)=> handleInput(e)} value={time.timeopen}/>
+                      <input type="time" class="nice-inputw-100"  id="timeOpen" name="timeOpen" />
                       </div>
                       <div className="col-md-6-2">
-                       <input type="time" class="nice-inputw-100 "  name="timeclose" onChange={ (e)=> handleInput(e)} value={time.timeclose}/>
+                       <input type="time" class="nice-inputw-100 " id="timeClose" name="timeClose" />
                       </div>  
                 </div>
                 <div className="rowflex-grow-2">
                       <div className="col-md-6-3">
-                      <select className="nice-inputw-100" name="seat" onChange={ (e)=> handleInput(e)} value={time.seat}>
+                      <select className="nice-inputw-100" name="seats" id="seats" >
                         <option value={''}>Chọn số bàn</option>
                            {
                              resSeats.map((seat)=>(

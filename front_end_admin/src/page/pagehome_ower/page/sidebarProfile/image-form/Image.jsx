@@ -5,19 +5,17 @@ import { useRef , useState } from 'react';
 
 export default function Image() {
   const inputRef = useRef(null)
-  const [image,setImage] = useState("")
 
-
+  const [image,Setimage] = useState('')
   const handleImageClick = ()=>{
     inputRef.current.click();
   }
   const handleImageChange = (event)=>{
     const file = event.target.files[0]
-    console.log(file)
-    setImage(event.target.files[0])
+    Setimage(file)
   }
   return (
-    <div className='image-restaurant'>
+    <div className='add-image-restaurant'>
         <span className="title-img">HÌNH ẢNH NHÀ HÀNG</span>
         
         <div className="push-image" onClick={handleImageClick}>

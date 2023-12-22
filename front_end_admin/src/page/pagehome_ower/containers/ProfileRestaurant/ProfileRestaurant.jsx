@@ -1,9 +1,9 @@
 import React from 'react'
-import Inforestaurant from '../../../components/sidebar/info-restaurant-form/Inforestaurant'
-import Desrestaurant from '../../../components/sidebar/option-form/Desrestaurant'
-import Image from '../../../components/sidebar/image-form/Image'
-import Timerestaurant from '../../../components/sidebar/time-form/Timerestaurant'
-import Addfoot from '../../../components/sidebar/addfoot-form/Addfoot'
+import Inforestaurant from '../../page/sidebarProfile/info-restaurant-form/Inforestaurant'
+import Desrestaurant from '../../page/sidebarProfile/option-form/Desrestaurant'
+import Image from '../../page/sidebarProfile/image-form/Image'
+import Timerestaurant from '../../page/sidebarProfile/time-form/Timerestaurant'
+import Addfoot from '../../page/sidebarProfile/addfoot-form/Addfoot'
 
 export default function ProfileRestaurant() {
   return (

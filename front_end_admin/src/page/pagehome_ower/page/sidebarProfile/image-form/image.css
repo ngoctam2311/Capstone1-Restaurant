@@ -1,0 +1,41 @@
+.add-image-restaurant{
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid #CDCDCD;
+    margin-left: 10px;
+    height: 120px;
+    margin-top: 20px;
+}
+.title-img{
+    margin-left: 20px;
+   padding-top: 10px;
+   color: #00665C;
+   font-family: Inter;
+   font-size: 15px;
+   font-style: normal;
+   font-weight: 700;
+}
+.push-image{
+   margin-top: 10px;
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    margin-left: 30px;
+    border-radius: 5px;
+}
+.push-image , .upload-img:hover{
+    cursor: pointer;
+}
+.upload-img{
+    color: white;
+    font-size:  40px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.img-display-before{
+    width: 70px;
+    height: 70px;
+}
+.file-img-image{
+    display: none;
+}
