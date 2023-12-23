@@ -7,17 +7,17 @@ export default function Reservations() {
    
   const [data , setData] = useState([]);
 
-  useEffect(()=>{
-    fetchData();
-  },[])
+//   useEffect(()=>{
+//     fetchData();
+//   },[])
   
-  const fetchData = async () => {
-    await axios.get('http://localhost:3000/api/restaurant/pending')
-    .then((res) => {
-       setData(res.data.data)
-       console.log(res.data.data)
-    })
-  }
+//   const fetchData = async () => {
+//     await axios.get('http://localhost:3000/api/restaurant/pending')
+//     .then((res) => {
+//        setData(res.data.data)
+//        console.log(res.data.data)
+//     })
+//   }
   
   // const fetchRespond = async (restaurantId, action) =>{
   //    await axios.patch('http://localhost:3000/api/restaurant/respond',{
@@ -29,6 +29,10 @@ export default function Reservations() {
   //      setData(res.data.data)
   //    })
   // }
+
+  useEffect(()=>{
+     axios.get("")
+  })
  
   const handleSearch = (e)=>{
     e.preventDefault()
