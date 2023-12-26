@@ -30,7 +30,7 @@ const RowApprove = ({ index, item, onRespond }) => {
             <th className="approveCol">{index + 1}</th>
             <th className="approveCol">{item.resname}</th>
             <th className="approveCol"></th>
-            <th className="approveCol"></th>
+            <th className="approveCol">{item.address.street }, {item.address.district}, {item.address.city}</th>
             <th className="approveCol">chủ nhà hàng</th>
             <th className="approveCol ">
                 <div>

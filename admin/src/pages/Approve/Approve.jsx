@@ -13,31 +13,31 @@ const Approve = () => {
 
     const fetchData = async () => {
         try {
-        await axios
-            .get(`http://localhost:3000/api/pending`)
-            .then((res) => {
-                setData(res.data.data);
-            });
+            await axios
+                .get(`http://localhost:3000/api/restaurant/pending`)
+                .then((res) => {
+                    setData(res.data.data);
+                });
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
     const fetchRespond = async (restaurantId, action) => {
-        await axios
-            .patch(`http://localhost:3000/api/restaurant/respond`, {
+        const res = await axios.patch(
+            `http://localhost:3000/api/restaurant/respond`,
+            {
                 restaurantId,
                 action,
-            })
-            .then((res) => {
-                setData(res.data.data);
-            });
-            fetchData();
+            }
+        );
+        setData(res.data.data);
+        fetchData();
     };
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        
+
         // Get the selected status from the dropdown
         const status = document.getElementById("statusDropdown").value;
 
@@ -45,9 +45,8 @@ const Approve = () => {
             const response = await axios.get(
                 `http://localhost:3000/api/restaurant?status=${status}`
             );
-    
             setData(response.data.data.result);
-            fetchData();
+            // console.log(response.data.data.result)
         } catch (error) {
             console.error("Error searching data:", error);
         }
@@ -67,7 +66,10 @@ const Approve = () => {
                 </div>
                 <div className="homeAdminGroup">
                     <label className="homeGroupHeading">Trạng thái</label>
-                    <select className="homeGroupInput" name="" id="statusDropdown"
+                    <select
+                        className="homeGroupInput"
+                        name=""
+                        id="statusDropdown"
                     >
                         <option value="accepted">accepted</option>
                         <option value="pending">pending</option>
@@ -79,14 +81,13 @@ const Approve = () => {
                 </button>
             </form>
             <div className="approveTable">
-                
-                    <table>
+                <table>
                     <thead>
                         <tr className="approveTableRow">
                             <th className="approveCol">STT</th>
                             <th className="approveCol">Tên</th>
                             <th className="approveCol">Số điện thoại</th>
-                            <th className="approveCol">Email</th>
+                            <th className="approveCol">Địa chỉ</th>
                             <th className="approveCol">Chức vụ</th>
                             <th className="approveCol">Trạng thái</th>
                         </tr>
@@ -95,7 +96,8 @@ const Approve = () => {
                         {loading ? (
                             <p>đang tải dữ liệu...</p>
                         ) : (
-                            data && data.map((item, index) => (
+                            data &&
+                            data.map((item, index) => (
                                 <RowApprove
                                     key={item._id}
                                     item={item}

@@ -40,7 +40,8 @@
 .topbarIcons {
     position: relative;
     cursor: pointer;
-    margin-right: 22px;
+    padding: 6px;
+    margin-right: 16px;
 }
 
 .topIconBellHidden {
@@ -51,8 +52,8 @@
     width: 18px;
     height: 18px;
     position: absolute;
-    top: -7px;
-    right: -7px;
+    top: -4px;
+    right: -2px;
     background-color: var(--white-color);
     color: var(--black-color);
     border-radius: 50%;

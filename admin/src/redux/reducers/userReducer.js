@@ -1,16 +1,40 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions/userAction";
+import {
+    USER_LOGIN,
+    USER_LOGOUT,
+    FETCH_USER_LOGIN,
+    FETCH_USER_ERROR,
+    FETCH_USER_SUCCESS,
+} from "../actions/userAction";
 
 const INITIAL_STATE = {
-    account: { email: "", auth: false },
+    account: { email: "", auth: false, token: "" },
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case USER_LOGIN:
-            return 1;
+        case FETCH_USER_LOGIN:
+            return {
+                ...state,
+            };
 
-        case USER_LOGOUT:
-            return 1;
+        case FETCH_USER_ERROR:
+            return {
+                ...state,
+                account: {
+                    auth: false,
+                },
+            };
+
+        case FETCH_USER_SUCCESS:
+            console.log("check:", action);
+            return {
+                ...state,
+                account: {
+                    email: action.data.email,
+                    token: action.data.token,
+                    auth: true,
+                },
+            };
 
         default:
             return state;

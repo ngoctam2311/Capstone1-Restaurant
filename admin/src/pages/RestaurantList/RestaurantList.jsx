@@ -23,7 +23,7 @@ const RestaurantList = () => {
     };
 
     const handleDelete = async (resId) => {
-        // console.log(resId)
+        console.log(resId)
         await axios.delete(`http://localhost:3000/api/restaurant/${resId}`);
         setData((prevData) => prevData.filter((res) => res.id !== resId));
         fetchData();

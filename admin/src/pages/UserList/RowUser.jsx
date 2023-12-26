@@ -19,7 +19,7 @@ const RowUser = ({ item, index, fetchData, setData }) => {
     // };
 
     const handleDelete = async (id) => {
-        console.log(id)
+        // console.log(id)
         await axios.delete(`http://localhost:3000/api/user/${id}`)
         setData(pre => pre.filter(user => user.id !== id))
         fetchData()

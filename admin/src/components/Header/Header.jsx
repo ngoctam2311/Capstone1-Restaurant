@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import { io } from "socket.io-client";
 import Tippy from "@tippyjs/react";
 import HeadlessTippy from "@tippyjs/react/headless";
@@ -8,6 +8,8 @@ import { FaRegBell } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import "./header.css";
 import { Notification, WrapperNotification } from "../index";
+import { UserContext } from "../../hook/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     // const [data, setData] = useState([]);
@@ -33,15 +35,20 @@ const Header = () => {
 
     const fetchData = async () => {
         try {
-            await axios.get("http://localhost:3000/api/pending").then((res) => {
-                setData(res.data.data.result);
+            await axios.get("http://localhost:3000/api/restaurant/pending").then((res) => {
+                setData(res.data.data);
+                // console.log(res.data.data)
             });
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
-    const handleLogout = () => {};
+    const { logout } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {logout();
+        navigate("/login");};
 
     return (
         <div className="topbar">
@@ -66,7 +73,7 @@ const Header = () => {
                                         tabIndex="-1"
                                         {...attrs}
                                     >
-                                        <Notification />
+                                        <Notification  />
                                     </div>
                                 </WrapperNotification>
                             )}

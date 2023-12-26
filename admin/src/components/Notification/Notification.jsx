@@ -15,9 +15,8 @@ const Notification = () => {
 
     const fetchData = async () => {
         try {
-            await axios.get("http://localhost:3000/api/pending").then((res) => {
-                setData(res.data.data.result);
-            });
+            const res = await axios.get("http://localhost:3000/api/restaurant/pending")
+            setData(res.data.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
