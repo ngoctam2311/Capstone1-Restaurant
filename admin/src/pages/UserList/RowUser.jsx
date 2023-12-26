@@ -20,17 +20,22 @@ const RowUser = ({ item, index, fetchData, setData }) => {
 
     const handleDelete = async (id) => {
         // console.log(id)
-        await axios.delete(`http://localhost:3000/api/user/${id}`)
+        await axios.delete(`http://localhost:3000/api/user/${id}`, {
+            headers: {
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTM1YmIxNmMxYzE0MjRkYzM0ODZkMyIsImlhdCI6MTcwMzU4ODc5NCwiZXhwIjoxNzAzNTg5Njk0fQ.lekW07DXvcMYwdyGqoDTE8dld0ujZxqLFE_Wf2H-egk`,
+                // Other headers...
+            },
+        })
         setData(pre => pre.filter(user => user.id !== id))
         fetchData()
-        alert("Xóa tài khoản người dùng thành công")
+        alert("Xóa người dùng thành công")
     };
 
     return (
         <tr className="UserListTableRow" key={item._id}>
             <th className="UserListCol">{index + 1}</th>
             <th className="UserListCol">{`${item.firstName} ${item.lastName}`}</th>
-            <th className="UserListCol">0213123123</th>
+            <th className="UserListCol"></th>
             <th className="UserListCol">{item.email}</th>
             <th className="UserListCol">{item.role}</th>
             <th className="UserListCol" onClick={() => handleDelete(item._id)}>

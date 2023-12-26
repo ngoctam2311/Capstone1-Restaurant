@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./restaurantList.css";
 import { PaginationComponent } from "../../components";
+import { UserContext } from "../../hook/UserContext";
 
 const RestaurantList = () => {
     const [data, setData] = useState([]);
@@ -21,14 +22,19 @@ const RestaurantList = () => {
                 setData(res.data.data.result);
             });
     };
-
-    const handleDelete = async (resId) => {
-        console.log(resId)
-        await axios.delete(`http://localhost:3000/api/restaurant/${resId}`);
-        setData((prevData) => prevData.filter((res) => res.id !== resId));
-        fetchData();
-        alert("Xóa nhà hàng thành công");
-    };
+    
+        const handleDelete = async (resId) => {
+            console.log(resId)
+            await axios.delete(`http://localhost:3000/api/restaurant/${resId}`, {
+                headers: {
+                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTM1YmIxNmMxYzE0MjRkYzM0ODZkMyIsImlhdCI6MTcwMzU4ODc5NCwiZXhwIjoxNzAzNTg5Njk0fQ.lekW07DXvcMYwdyGqoDTE8dld0ujZxqLFE_Wf2H-egk`,
+                    // Other headers...
+                },
+            });
+            setData((prevData) => prevData.filter((res) => res.id !== resId));
+            fetchData();
+            alert("Xóa nhà hàng thành công");
+        };
 
     const dataSearch = async (value, pageno) => {
         await axios
@@ -37,6 +43,7 @@ const RestaurantList = () => {
             )
             .then((res) => {
                 setData(res.data.data);
+                // console.log(res.data.data);
             });
     };
 
@@ -82,7 +89,6 @@ const RestaurantList = () => {
                             <th className="restaurantListCol">
                                 Giá trung bình
                             </th>
-                            <th className="restaurantListCol">Điểm đánh giá</th>
                             <th className="restaurantListCol">
                                 Loại hình nhà hàng
                             </th>
@@ -123,9 +129,6 @@ const RestaurantList = () => {
                                     </th>
                                     <th className="restaurantListCol">
                                         {item.averagePrice}
-                                    </th>
-                                    <th className="restaurantListCol">
-                                        {item.pointEvaluation}
                                     </th>
                                     <th className="restaurantListCol">
                                         {item.typeOfRes}

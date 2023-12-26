@@ -52,15 +52,10 @@ thead .restaurantListTableRow:nth-child(1) {
 }
 
 .restaurantListCol:nth-child(8) {
-    text-align: center;
-    width: 90px;
-}
-
-.restaurantListCol:nth-child(9) {
     width: 110px;
 }
 
-.restaurantListCol:nth-child(10) {
+.restaurantListCol:nth-child(9) {
     width: 46px;
     padding: 0;
 }

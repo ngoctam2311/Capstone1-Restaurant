@@ -5,9 +5,9 @@ import NotFount from "./NotFount";
 export const routes = {
     login: "/login",
     home: "/",
-    restaurantList: "/restaurant-list",
+    restaurantList: "/api/restaurant",
     approve: "/approve",
-    userList: "/user-list",
+    userList: "/api/user",
     notFount: "/*",
 };
 

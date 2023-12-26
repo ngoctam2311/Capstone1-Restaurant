@@ -26,6 +26,7 @@ const initLoginValue = {
 const Login = () => {
     const [loginValue, setLoginValue] = useState(initLoginValue);
     const [loginError, setLoginError] = useState({});
+    const [loginErrorMessage, setLoginErrorMessage] = useState("");
 
     const { loginContext } = useContext(UserContext);
     const navigate = useNavigate();
@@ -74,9 +75,14 @@ const Login = () => {
                     }
                 );
                 loginContext(response.data.status, response.data.token);
+                console.log(response.data.token)
                 navigate("/");
             } catch (error) {
-                console.error("Error:", error);
+                if (error.response && error.response.status === 401) {
+                    setLoginErrorMessage("Email hoặc mật khẩu không chính xác");
+                } else {
+                    console.error("Error:", error);
+                }
             }
             // finally {
             //     setIsLoading(false);
@@ -121,7 +127,7 @@ const Login = () => {
                                 <span className="account-error">
                                     {loginError.password}
                                 </span>
-                            )}
+                            ) || loginErrorMessage}
                         </div>
                         <button className="wrap-form__btn">ĐĂNG NHẬP</button>
                     </form>

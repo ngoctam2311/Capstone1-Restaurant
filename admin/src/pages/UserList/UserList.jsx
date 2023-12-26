@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./userList.css";
 import RowUser from "./RowUser";
 import { PaginationComponent } from "../../components";
+import { UserContext } from "../../hook/UserContext";
 
 const UserList = () => {
     const [data, setData] = useState([]);
     const [pageno, setPageno] = useState(1);
     const paginationno = 51;
+
+    const { user, loginContext } = useContext(UserContext);
 
     useEffect(() => {
         fetchData(pageno);
@@ -15,9 +18,15 @@ const UserList = () => {
 
     const fetchData = async () => {
         await axios
-            .get(`http://localhost:3000/api/user?page=${pageno}&limit=10`)
+            .get(`http://localhost:3000/api/user?page=${pageno}&limit=10`,{
+                headers: {
+                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTM1YmIxNmMxYzE0MjRkYzM0ODZkMyIsImlhdCI6MTcwMzU4ODc5NCwiZXhwIjoxNzAzNTg5Njk0fQ.lekW07DXvcMYwdyGqoDTE8dld0ujZxqLFE_Wf2H-egk`,
+                    // Other headers...
+                },
+            })
             .then((res) => {
-                console.log(res.data)
+                setData(res.data.data)
+                console.log(res.data.data)
             });
     };
     
@@ -41,13 +50,6 @@ const UserList = () => {
                         placeholder="Nhập tên cần tìm"
                     />
                 </div>
-                {/* <div className="homeAdminGroup">
-                    <label className="homeGroupHeading">Trạng thái</label>
-                    <select className="homeGroupInput" name="" id="">
-                        <option value="0">Mở khóa</option>
-                        <option value="1">Khóa</option>
-                    </select>
-                </div> */}
                 <button className="homebtn" onSubmit={handleSearch}>
                     Tìm kiếm
                 </button>
@@ -61,7 +63,6 @@ const UserList = () => {
                             <th className="UserListCol">Số điện thoại</th>
                             <th className="UserListCol">Email</th>
                             <th className="UserListCol">Chức vụ</th>
-                            {/* <th className="UserListCol">Trạng thái</th> */}
                         </tr>
                     </thead>
                     <tbody>

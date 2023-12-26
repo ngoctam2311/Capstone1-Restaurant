@@ -11,6 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         dataSearch(pageno);
+        // userData()
     }, [pageno]);
 
     const dataSearch = async (value, pageno) => {
@@ -31,6 +32,11 @@ const Home = () => {
                 setData(result);
             });
     };
+
+    // const userData = async () => {
+    //     const res = await axios.get("http://localhost:3000/api/user")
+    //     console.log(res.data)
+    // }
 
     const handleSearch = (e) => {
         e.preventDefault();
