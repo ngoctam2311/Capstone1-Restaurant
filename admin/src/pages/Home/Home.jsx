@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./home.css";
 import { PaginationComponent } from "../../components";
+import { UserContext } from "../../hook/UserContext";
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -9,34 +10,46 @@ const Home = () => {
     const [pageno, setPageno] = useState(1);
     const ref = useRef();
 
+    const { user, loginContext } = useContext(UserContext);
+    const option = {
+        config: {
+            headers: {
+                "Content-Type":
+                    "application/x-www-form-urlencoded;application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${user.auth}`,
+            },
+        },
+    };
+
     useEffect(() => {
         dataSearch(pageno);
         // userData()
     }, [pageno]);
 
     const dataSearch = async (value, pageno) => {
-        await axios
-            .get(
-                `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`
-            )
-            .then((res) => {
-                setData(res.data);
-                const result = res.data.data.filter((name) => {
-                    const nameFood = name.resname;
-                    return (
-                        nameFood &&
-                        value &&
-                        nameFood.toLowerCase().includes(value)
-                    );
+        try {
+            await axios
+                .get(
+                    `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`,
+                    option
+                )
+                .then((res) => {
+                    setData(res.data);
+                    const result = res.data.data.filter((name) => {
+                        const nameFood = name.resname;
+                        return (
+                            nameFood &&
+                            value &&
+                            nameFood.toLowerCase().includes(value)
+                        );
+                    });
+                    setData(result);
                 });
-                setData(result);
-            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
-
-    // const userData = async () => {
-    //     const res = await axios.get("http://localhost:3000/api/user")
-    //     console.log(res.data)
-    // }
 
     const handleSearch = (e) => {
         e.preventDefault();

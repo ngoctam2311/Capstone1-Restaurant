@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
     const loginContext = (email, data) => {
         setUser((user) => ({
             email: email,
-            auth: true,
+            auth: data,
         }));
         localStorage.setItem("email", email);
         localStorage.setItem("login", data);

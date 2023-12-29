@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./approve.css";
 import RowApprove from "./RowApprove";
+import { UserContext } from "../../hook/UserContext";
 
 const Approve = () => {
     const [data, setData] = useState([]);
@@ -11,10 +12,20 @@ const Approve = () => {
         fetchData();
     }, []);
 
+    const { user } = useContext(UserContext);
+    const option = {
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded;application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${user.auth}`,
+        },
+    };
+
     const fetchData = async () => {
         try {
             await axios
-                .get(`http://localhost:3000/api/restaurant/pending`)
+                .get(`http://localhost:3000/api/restaurant/pending`, option)
                 .then((res) => {
                     setData(res.data.data);
                 });
@@ -24,15 +35,20 @@ const Approve = () => {
     };
 
     const fetchRespond = async (restaurantId, action) => {
-        const res = await axios.patch(
-            `http://localhost:3000/api/restaurant/respond`,
-            {
-                restaurantId,
-                action,
-            }
-        );
-        setData(res.data.data);
-        fetchData();
+        try {
+            const res = await axios.patch(
+                `http://localhost:3000/api/restaurant/respond`,
+                {
+                    restaurantId,
+                    action,
+                },
+                option
+            );
+            setData(res.data.data);
+            fetchData();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
     const handleSearch = async (e) => {

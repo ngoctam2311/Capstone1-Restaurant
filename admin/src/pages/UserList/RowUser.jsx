@@ -1,34 +1,27 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import { FaEllipsisVertical } from "react-icons/fa6";
 // import { PiLockKeyLight } from "react-icons/pi";
 // import { PiLockKeyOpenLight } from "react-icons/pi";
 import "./userList.css";
+import { UserContext } from "../../hook/UserContext";
 
 const RowUser = ({ item, index, fetchData, setData }) => {
-    // const [menu, setMenu] = useState(false);
-    // const [status, setStatus] = useState("Mở khóa");
+    const { user } = useContext(UserContext);
 
-    // const handleIcon = () => {
-    //     setMenu(!menu);
-    // };
-
-    // const handleStatus = (newStatus) => {
-    //     setStatus(newStatus);
-    //     setMenu(false);
-    // };
+    const option = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.auth}`,
+        },
+    };
 
     const handleDelete = async (id) => {
-        // console.log(id)
-        await axios.delete(`http://localhost:3000/api/user/${id}`, {
-            headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTM1YmIxNmMxYzE0MjRkYzM0ODZkMyIsImlhdCI6MTcwMzU4ODc5NCwiZXhwIjoxNzAzNTg5Njk0fQ.lekW07DXvcMYwdyGqoDTE8dld0ujZxqLFE_Wf2H-egk`,
-                // Other headers...
-            },
-        })
-        setData(pre => pre.filter(user => user.id !== id))
-        fetchData()
-        alert("Xóa người dùng thành công")
+        // console.log(id);
+        await axios.delete(`http://localhost:3000/api/user/${id}`, option);
+        setData((pre) => pre.filter((user) => user.id !== id));
+        fetchData();
+        alert("Xóa người dùng thành công");
     };
 
     return (

@@ -12,33 +12,29 @@ import { UserContext } from "../../hook/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-    // const [data, setData] = useState([]);
-    // const [socket, setSocket] = useState(null);
-
-    // useEffect(() => {
-    //     const  socket = io("")
-    //     setSocket(socket);
-
-    //     socket.on("dataUpdate", () => {fetchData()})
-    // fetchData()
-
-    //     return () => {
-    //         socket.disconnect()
-    //     }
-    // }, []);
-
     const [data, setData] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    const { user } = useContext(UserContext);
+    const option = {
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded;application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${user.auth}`,
+        },
+    };
+
     const fetchData = async () => {
         try {
-            await axios.get("http://localhost:3000/api/restaurant/pending").then((res) => {
-                setData(res.data.data);
-                // console.log(res.data.data)
-            });
+            await axios
+                .get(`http://localhost:3000/api/restaurant/pending`, option)
+                .then((res) => {
+                    setData(res.data.data);
+                });
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -47,8 +43,10 @@ const Header = () => {
     const { logout } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleLogout = () => {logout();
-        navigate("/login");};
+    const handleLogout = () => {
+        logout();
+        navigate("/login");
+    };
 
     return (
         <div className="topbar">
@@ -73,7 +71,7 @@ const Header = () => {
                                         tabIndex="-1"
                                         {...attrs}
                                     >
-                                        <Notification  />
+                                        <Notification />
                                     </div>
                                 </WrapperNotification>
                             )}

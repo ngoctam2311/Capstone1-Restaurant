@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ImageAccount from "../../img/imgAccount.png";
-import "./login.css"
+import "./login.css";
 import { UserContext } from "../../hook/UserContext";
 // import { useDispatch } from "react-redux";
 // import { hanldeLoginRedux } from "../../redux/actions/userAction";
@@ -30,7 +30,6 @@ const Login = () => {
 
     const { loginContext } = useContext(UserContext);
     const navigate = useNavigate();
-
 
     const validateRegister = () => {
         const error = {};
@@ -75,7 +74,7 @@ const Login = () => {
                     }
                 );
                 loginContext(response.data.status, response.data.token);
-                console.log(response.data.token)
+                console.log(response.data.token);
                 navigate("/");
             } catch (error) {
                 if (error.response && error.response.status === 401) {
@@ -123,11 +122,12 @@ const Login = () => {
                                 value={loginValue.password}
                                 onChange={handleChange}
                             />
-                            {loginError.password && (
+                            {(loginError.password && (
                                 <span className="account-error">
                                     {loginError.password}
                                 </span>
-                            ) || loginErrorMessage}
+                            )) ||
+                                loginErrorMessage}
                         </div>
                         <button className="wrap-form__btn">ĐĂNG NHẬP</button>
                     </form>

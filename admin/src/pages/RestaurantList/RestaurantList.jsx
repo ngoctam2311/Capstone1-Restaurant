@@ -13,33 +13,48 @@ const RestaurantList = () => {
     useEffect(() => {
         fetchData(pageno);
         dataSearch(searchValue, pageno);
-    }, [pageno,searchValue]);
+    }, [pageno, searchValue]);
+
+    const { user } = useContext(UserContext);
+
+    const option = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.auth}`,
+        },
+    };
 
     const fetchData = async (pageno) => {
-        await axios
-            .get(`http://localhost:3000/api/restaurant?page=${pageno}&limit=10`)
-            .then((res) => {
-                setData(res.data.data.result);
-            });
+        try {
+            await axios
+                .get(
+                    `http://localhost:3000/api/restaurant?page=${pageno}&limit=10`,
+                    option
+                )
+                .then((res) => {
+                    setData(res.data.data.result);
+                });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
-    
-        const handleDelete = async (resId) => {
-            console.log(resId)
-            await axios.delete(`http://localhost:3000/api/restaurant/${resId}`, {
-                headers: {
-                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NTM1YmIxNmMxYzE0MjRkYzM0ODZkMyIsImlhdCI6MTcwMzU4ODc5NCwiZXhwIjoxNzAzNTg5Njk0fQ.lekW07DXvcMYwdyGqoDTE8dld0ujZxqLFE_Wf2H-egk`,
-                    // Other headers...
-                },
-            });
-            setData((prevData) => prevData.filter((res) => res.id !== resId));
-            fetchData();
-            alert("Xóa nhà hàng thành công");
-        };
+
+    const handleDelete = async (resId) => {
+        console.log(resId);
+        await axios.delete(
+            `http://localhost:3000/api/restaurant/${resId}`,
+            option
+        );
+        setData((prevData) => prevData.filter((res) => res.id !== resId));
+        fetchData();
+        alert("Xóa nhà hàng thành công");
+    };
 
     const dataSearch = async (value, pageno) => {
         await axios
             .get(
-                `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`
+                `http://localhost:3000/api/restaurant/search?search=${value}&page=${pageno}&limit=10`,
+                option
             )
             .then((res) => {
                 setData(res.data.data);

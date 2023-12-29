@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import "./notification.css";
 import { routes } from "../../Routes/Routes";
+import { UserContext } from "../../hook/UserContext";
 
 const Notification = () => {
     const [activeColor, setActiveColor] = useState(false);
@@ -13,10 +14,23 @@ const Notification = () => {
         fetchData();
     }, []);
 
+    const { user } = useContext(UserContext);
+    const option = {
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded;application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${user.auth}`,
+        },
+    };
+
     const fetchData = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/api/restaurant/pending")
-            setData(res.data.data);
+            await axios
+                .get(`http://localhost:3000/api/restaurant/pending`, option)
+                .then((res) => {
+                    setData(res.data.data);
+                });
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -29,7 +43,9 @@ const Notification = () => {
     return (
         <>
             {data.length === 0 ? (
-                <p className="notRestaurantApprove">không có nhà hàng cần phê duyệt</p>
+                <p className="notRestaurantApprove">
+                    không có nhà hàng cần phê duyệt
+                </p>
             ) : (
                 data.map((item, index) => (
                     <Link to={routes.approve} ref={ref} key={index}>
