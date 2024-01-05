@@ -8,7 +8,7 @@ import { UserContext } from "../../hook/UserContext";
 const UserList = () => {
     const [data, setData] = useState([]);
     const [pageno, setPageno] = useState(1);
-    const paginationno = 51;
+    const paginationno = 52;
 
     useEffect(() => {
         fetchData(pageno);

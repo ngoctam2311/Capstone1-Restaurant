@@ -30,7 +30,7 @@
 }
 
 .sidebarList-item {
-    margin-top: 20px;
+    margin: 20px 0 40px;
     border-radius: 5px;
     cursor: pointer;
     padding: 5px;

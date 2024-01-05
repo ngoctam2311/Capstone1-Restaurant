@@ -11,7 +11,7 @@ function App() {
     // console.log(dataRedux);
 
     const { user, loginContext } = useContext(UserContext);
-    console.log("user", user.auth);
+    // console.log("user", user.auth);
 
     useEffect(() => {
         if (localStorage.getItem("login")) {

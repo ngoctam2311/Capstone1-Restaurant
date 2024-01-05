@@ -82,6 +82,10 @@
     margin: 0;
 }
 
+.disabled {
+    margin: 0;
+}
+
 @media (max-width: 576px) {
     .paginationWap .pagination .page-item a {
         font-size: 15px;

@@ -74,7 +74,6 @@ const Login = () => {
                     }
                 );
                 loginContext(response.data.status, response.data.token);
-                console.log(response.data.token);
                 navigate("/");
             } catch (error) {
                 if (error.response && error.response.status === 401) {
