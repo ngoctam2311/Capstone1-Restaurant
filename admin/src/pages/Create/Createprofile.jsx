@@ -29,21 +29,21 @@ export default function Createprofile(){
     resMenuInfor: ""
   });
 
-  const {user} = useContext(UserContext)
+  // const {user} = useContext(UserContext)
   
-  const option = {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${user.auth}`,
-    },
-  };
+  // const option = {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json",
+  //     Authorization: `Bearer ${user.auth}`,
+  //   },
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
     try {
-      const response = await axios.post('http://localhost:3000/api/restaurant',option, create
+      const response = await axios.post('http://localhost:3000/api/restaurant', create
         
       );
       console.log(response.data);
@@ -147,7 +147,7 @@ const handlecancel = () =>{
             </div>
          </div>
 
-         <form onSubmit={handleSubmit}>
+         {/* <form onSubmit={handleSubmit}> */}
 
          <div className="maincontent">
             <div className="listcontent">
@@ -199,14 +199,14 @@ const handlecancel = () =>{
               </div>
               <div className="footer-button">
              <div className="button">
-                 <button className='save'>Lưu lại</button>
+                 <button className='save' onClick={handleSubmit}>Lưu lại</button>
                  <button className='cancel' onClick={handlecancel}>Hủy bỏ</button>
               </div>
              </div>
             </div>
          </div>
         </div>
-         </form>
+         {/* </form> */}
 
    </div>
   )

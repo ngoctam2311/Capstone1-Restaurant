@@ -134,9 +134,9 @@ const Login = () => {
                     </form>
                     <div className="login-footer">
                         
-                        <Link to={routes.register} className="login-footer__register">
+                        {/* <Link to={routes.register} className="login-footer__register">
                             Đăng ký
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
