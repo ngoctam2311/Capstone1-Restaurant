@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.info-restaurant{
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid #CDCDCD;
+    margin-left: 10px;
+    height: 250px;
+}
+.title-name-info{
+   margin: 5px 35px;
+   color: #00665C;
+   font-family: Inter;
+   font-size: 15px;
+   font-style: normal;
+   font-weight: 700;
+   
+}
+.infoForm{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    
+}
+.infoItem{
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 30px;
+}
+.text-input{
+   height: 30px;
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   margin-top:10px;
+   background: rgba(255, 255, 255, 0.96);
+
+}
+.file-img-info{
+    display: none;
+}
+.file-name{
+    margin-top: 10px;
+    color: rgba(55, 146, 197, 0.99);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: underline;
+}
+.account-error {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fb3f3f;
+    margin-top: 4px;
+    margin-left: 4px;
+    cursor: default;
+    user-select: none;
+}

@@ -1,0 +1,118 @@
+.times-restaurant{
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 10px;
+   height:200px
+}
+.setuptime{
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 20px;
+   height: 150px;
+   margin-top: 5px;
+
+}
+.account-error {
+   display: block;
+   font-size: 1.4rem;
+   font-weight: 500;
+   color: #fb3f3f;
+   margin-top: 4px;
+   margin-left: 4px;
+   cursor: default;
+   user-select: none;
+}
+
+.time-name{
+   color: #000;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.title-time{
+   margin-left: 20px;
+   padding-top: 10px;
+   color: #00665C;
+   font-family: Inter;
+   font-size: 15px;
+   font-style: normal;
+   font-weight: 700;
+
+}
+
+.title-name{
+   margin-left: 20px;
+   margin-top: 5px;
+   color: #00665C;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.rowflex-grow-1{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 10px;
+}
+.rowflex-grow-2{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 10px;
+}
+.nice-inputw-100{
+   width: 150px;
+   height: 25px;
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: rgba(255, 255, 255, 0.96);
+}
+.setuptime-text{
+   margin: 5px 10px;
+}
+.button-time{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 10px;
+}
+.time{
+   color: #FFF;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.nice-inputw-150{
+   width: 150px;
+   height: 30px;
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: rgba(255, 255, 255, 0.96);
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: #00665C;
+}
+.nice-inputw-160{
+   width: 150px;
+   height: 30px;
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: rgba(255, 255, 255, 0.96);
+   border-radius: 2px;
+   border: 1px solid #CDCDCD;
+   background: #9A2145;
+}
+.delete{
+   color: #FFF;
+   font-family: Inter;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+}

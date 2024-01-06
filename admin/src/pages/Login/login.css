@@ -1,0 +1,146 @@
+.form-account {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 200px;
+}
+
+.form-account__img {
+    width: 50%;
+    height: 100%;
+}
+
+.wrap-form {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border-right: 3px solid var(--border-color);
+    overflow: hidden;
+}
+
+.wrap-form__heading {
+    display: flex;
+    justify-content: center;
+    color: var(--text-color);
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.account-error {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fb3f3f;
+    margin-top: 4px;
+    margin-left: 4px;
+    cursor: default;
+    user-select: none;
+}
+
+.wrap-form__control {
+    border: none;
+    width: 380px;
+    border-bottom: 1px solid var(--green-color);
+    margin-top: 12px;
+    padding: 10px 12px;
+    font-size: 1.6rem;
+    outline: none;
+}
+
+/* ----- Form Register ----- */
+.wrap-form__radius-btn {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+.wrap-form__group {
+    display: flex;
+    color: var(--text-color);
+}
+
+.wrap-form__checked {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-right: 4px;
+}
+
+.register__verify {
+    position: fixed;
+    top: 14px;
+    right: 10px;
+    font-size: 1.8rem;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    animation: rightAni 0.6s linear;
+}
+
+@keyframes rightAni {
+    0% {
+        opacity: 0;
+        transform: translateX(290px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.disabled {
+    margin-top: 40px;
+    margin-left: 30%;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--green-color);
+}
+
+.wrap-form__btn {
+    font-size: 1.6rem;
+    margin-top: 18px;
+    background-color: var(--green-color);
+    padding: 12px 24px;
+    color: var(--white-color);
+    border-radius: 6px;
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.wrap-form__btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* ----- Form Login ----- */
+.login-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 110px;
+}
+
+.login-footer__forgot,
+.login-footer__register {
+    font-size: 1.6rem;
+    right: 0;
+    font-weight: 600;
+    color: var(--text-color);
+}

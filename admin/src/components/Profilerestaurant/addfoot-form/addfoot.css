@@ -1,0 +1,95 @@
+.add-foot-restaurant{
+     width: 90%;
+    border-radius: 10px;
+    border: 1px solid #CDCDCD;
+    margin-left: 10px;
+    height:380px;
+    margin-top: 20px;
+}
+.title-name-addfoot{
+    margin-left: 20px;
+    padding-top: 10px;
+    color: #00665C;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+}
+.all-add-foot{
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 20px;
+   height: 320px;
+   margin-top: 10px;
+}
+.add-foot{
+    margin: 20px 10px;
+}
+.form-foot{
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+    height: 40px;
+}
+.textinput{
+    height: 30px;
+    width: 300px;
+    padding: 6px 12px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: rgba(255, 255, 255, 0.96);
+}
+.button-add-foot{
+    height: 30px;
+    width: 150px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #00665C;
+    color: #fff;
+    font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.button-foot{
+    height: 30px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.button-delete-foot{
+    height: 30px;
+    width: 150px;
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    background: #9A2145;
+    color: #fff;
+    margin-right: 15px;
+    font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.img-display{
+    width: 40px;
+    height: 40px;
+}
+.form-foot-img{
+    width: 40px;
+    height: 40px;
+}
+.file-img-add{
+    display: none;
+}
+.file-upimg{
+    width: 200px;
+}
+.form-foot-img{
+    width: 350px;
+}

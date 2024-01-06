@@ -1,0 +1,22 @@
+
+.des-restaurant{
+   width: 90%;
+   border-radius: 10px;
+   border: 1px solid #CDCDCD;
+   margin-left: 10px;
+   height: 250px;
+   margin-top: 20px;
+}
+.title-des{
+   margin-left: 20px;
+   padding-top: 10px;
+   color: #00665C;
+   font-family: Inter;
+   font-size: 15px;
+   font-style: normal;
+   font-weight: 700;
+ 
+}
+.text-editor{
+   margin-top: 10px;
+}
