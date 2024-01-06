@@ -38,22 +38,14 @@ export default function Addfoot({create,Setcreate,handleInputChange,errors}) {
             <span className="title-foot">Món ăn</span>
             <div className="form-foot">
                 <input type='text' className='textinput' id='typeOfRes' name='typeOfRes' onChange={handleInputChange} value={create.typeOfRes}></input>
-                { errors.typeOfRes && (
-                  <span className="account-error">
-                  {errors.typeOfRes}
-                  </span>
-                )}
+                
             </div>
         </div>
         <div className="add-foot">
             <span className="title-foot">Giá Tiền</span>
             <div className="form-foot">
                 <input type='text' className='textinput' id='averagePrice' name='averagePrice' onChange={handleInputChange} value={create.averagePrice}></input>
-                { errors.averagePrice && (
-                  <span className="account-error">
-                  {errors.averagePrice}
-                  </span>
-                )}
+                
             </div>
         </div>
         </form>
@@ -67,8 +59,8 @@ export default function Addfoot({create,Setcreate,handleInputChange,errors}) {
             </div>
         </div>
         <div className="button-foot">
-        <button className='button-add-foot'>Thêm món & giá</button>
-        <button className='button-delete-foot'>Xóa</button>
+        {/* <button className='button-add-foot'>Thêm món & giá</button>
+        <button className='button-delete-foot'>Xóa</button> */}
         </div>
         </div> 
     </div>

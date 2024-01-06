@@ -2,7 +2,7 @@ import { useState , useEffect  } from "react"
 import "./timerestaurant.css"
 import axios from "axios"
 
-export default function Timerestaurant({create,Setcreate,handleInputChange, errors}) {
+export default function Timerestaurant({create,Setcreate,handleInputChange}) {
   let number = [5,7,10,20,30];
 
    
@@ -30,11 +30,7 @@ export default function Timerestaurant({create,Setcreate,handleInputChange, erro
                              ))
                            }
                       </select>
-                      { errors.seats && (
-                        <span className="account-error">
-                        {errors.seats}
-                        </span>
-                        )}
+                    
                       </div>
                       {/* <div className="col-md-6-2">
                        <input type="text" class="nice-inputw-100 " formControlName="endTime" />

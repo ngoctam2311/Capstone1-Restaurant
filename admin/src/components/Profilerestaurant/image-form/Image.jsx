@@ -4,7 +4,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 import { useState } from 'react';
 
                        
-export default function Image({create,Setcreate,errors}) {
+export default function Image({create,Setcreate}) {
   const [avatar , setavatar] = useState()
   
   useEffect(()=>{
@@ -46,11 +46,7 @@ export default function Image({create,Setcreate,errors}) {
            </label>
           
         </div>
-        { errors.image && (
-              <span className="account-error">
-              {errors.image}
-              </span>
-            )}
+        
     </div>
   )
 }

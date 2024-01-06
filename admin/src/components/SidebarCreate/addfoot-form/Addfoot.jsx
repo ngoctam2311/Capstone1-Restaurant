@@ -67,8 +67,8 @@ export default function Addfoot({create,Setcreate,handleInputChange,errors}) {
             </div>
         </div>
         <div className="button-foot">
-        <button className='button-add-foot'>Thêm món & giá</button>
-        <button className='button-delete-foot'>Xóa</button>
+        {/* <button className='button-add-foot'>Thêm món & giá</button>
+        <button className='button-delete-foot'>Xóa</button> */}
         </div>
         </div> 
     </div>

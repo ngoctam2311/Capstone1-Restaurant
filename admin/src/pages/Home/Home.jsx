@@ -42,10 +42,12 @@ const Home = () => {
                          <p></p>
                      </div>
                      <div className="district-home">
-                      <span> <LocationOnIcon/> </span>
+                      <span> <LocationOnIcon/> Số 20 đường Đống Đa, P.Thuận Phước, Q.Hải Châu, Tp.Đà Nẵng </span>
+
                      </div>
                      <div className="description-home">
-                       <p></p>
+                       <p>MÓN ĐẶC SẮC:
+                          Burrata and Tomato with Caprese Salad, Veal Carpaccio, Scalops and Squid Ink Pasta With Xo and Brandy Sauce, Pearl Barley Risotto, Slow Cooked Iberico Pork Cheek, Lamp Tenderloin and Rigatoni Stuffed with Herb Jus, Japanese A5 Striploin</p>
                      </div>
                  </div>
            </div>
